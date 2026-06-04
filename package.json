@@ -1,0 +1,11 @@
+{
+  "name": "grow-chiangmai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node -e \"console.log('Static site ready in outputs/grow-chiangmai')\""
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
