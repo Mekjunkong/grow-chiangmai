@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
       --paper: oklch(0.965 0.018 83);
@@ -19,8 +20,10 @@
       --leaf-dark: oklch(0.34 0.09 144);
       --leaf-soft: oklch(0.83 0.08 135);
       --harvest: oklch(0.82 0.13 86);
+      --sun: oklch(0.87 0.11 96);
       --clay: oklch(0.58 0.105 42);
       --water: oklch(0.78 0.07 205);
+      --charcoal: oklch(0.27 0.035 72);
       --ink-muted: oklch(0.45 0.03 96);
       --line: oklch(0.77 0.035 82);
       --error: oklch(0.5 0.12 25);
@@ -96,9 +99,8 @@
       align-items: center;
       gap: 16px;
       padding: 14px max(16px, env(safe-area-inset-left)) 14px max(16px, env(safe-area-inset-right));
-      background: oklch(0.965 0.018 83 / 0.92);
+      background: var(--paper);
       border-bottom: 1px solid oklch(0.77 0.035 82 / 0.75);
-      backdrop-filter: blur(10px);
     }
 
     .brand-mark {
@@ -290,6 +292,36 @@
       font-size: 0.96rem;
     }
 
+    .hero-proof {
+      display: grid;
+      gap: 1px;
+      max-width: 720px;
+      margin-top: 34px;
+      border: 2px solid oklch(0.965 0.018 83 / 0.78);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: oklch(0.965 0.018 83 / 0.78);
+    }
+
+    .proof-item {
+      display: grid;
+      gap: 4px;
+      padding: 14px 16px;
+      background: oklch(0.31 0.045 58 / 0.78);
+    }
+
+    .proof-item strong {
+      color: var(--harvest);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      font-size: 1.06rem;
+      line-height: 1.05;
+    }
+
+    .proof-item span {
+      color: oklch(0.94 0.018 83);
+      font-size: 0.92rem;
+    }
+
     .camera-tag {
       position: absolute;
       right: 6%;
@@ -322,12 +354,22 @@
       overflow: hidden;
     }
 
+    section[id] {
+      scroll-margin-top: 92px;
+    }
+
     .band {
       padding: 72px 16px;
     }
 
     .band.tight {
       padding-top: 42px;
+    }
+
+    .pilot-band {
+      background:
+        linear-gradient(135deg, oklch(0.87 0.11 96 / 0.42), transparent 42%),
+        var(--paper);
     }
 
     .wrap {
@@ -376,6 +418,87 @@
     .ways-grid {
       display: grid;
       gap: 18px;
+    }
+
+    .pilot-ledger,
+    .care-switchboard,
+    .ops-board {
+      display: grid;
+      gap: 1px;
+      border: 2px solid var(--soil);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--soil);
+    }
+
+    .ledger-row,
+    .care-choice,
+    .ops-cell {
+      display: grid;
+      gap: 10px;
+      padding: 20px;
+      background: var(--paper-pale);
+    }
+
+    .ledger-row {
+      grid-template-columns: minmax(110px, 0.38fr) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .ledger-row strong,
+    .care-choice h3,
+    .ops-cell h3 {
+      margin: 0;
+      color: var(--leaf-dark);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      font-size: 1.32rem;
+      line-height: 1.06;
+    }
+
+    .ledger-row p,
+    .care-choice p,
+    .ops-cell p {
+      margin: 0;
+      color: var(--soil-soft);
+    }
+
+    .ledger-row .label {
+      color: var(--clay);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      font-weight: 800;
+    }
+
+    .care-switchboard {
+      margin-bottom: 26px;
+    }
+
+    .care-choice {
+      position: relative;
+      min-height: 100%;
+    }
+
+    .care-choice.featured {
+      background: var(--sun);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 9px;
+      border: 1px solid oklch(0.34 0.055 58 / 0.48);
+      border-radius: 999px;
+      background: oklch(0.985 0.012 86 / 0.72);
+      color: var(--soil);
+      font-size: 0.88rem;
+      font-weight: 700;
     }
 
     .package {
@@ -503,6 +626,22 @@
       color: var(--soil-soft);
     }
 
+    .ops-board {
+      margin-top: 26px;
+    }
+
+    .ops-cell:nth-child(2) {
+      background: oklch(0.93 0.055 205);
+    }
+
+    .ops-cell:nth-child(3) {
+      background: oklch(0.93 0.065 136);
+    }
+
+    .ops-cell:nth-child(4) {
+      background: oklch(0.95 0.055 82);
+    }
+
     .pricing-matrix {
       display: grid;
       gap: 1px;
@@ -541,6 +680,81 @@
       display: grid;
       gap: 28px;
       align-items: center;
+    }
+
+    .ai-band {
+      background: var(--charcoal);
+      color: var(--paper-pale);
+    }
+
+    .ai-band .section-kicker {
+      color: var(--water);
+    }
+
+    .ai-band .section-head p,
+    .ai-panel p,
+    .ai-step span {
+      color: oklch(0.88 0.022 84);
+    }
+
+    .ai-layout {
+      display: grid;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .ai-panel {
+      padding: 24px;
+      border: 2px solid var(--paper-pale);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, oklch(0.78 0.07 205 / 0.2), transparent 40%),
+        oklch(0.32 0.04 72);
+      box-shadow: 10px 10px 0 oklch(0.78 0.07 205 / 0.5);
+    }
+
+    .ai-panel h3,
+    .ai-step strong {
+      margin: 0;
+      color: var(--water);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      line-height: 1.08;
+    }
+
+    .ai-panel h3 {
+      font-size: 2rem;
+    }
+
+    .ai-steps {
+      display: grid;
+      gap: 1px;
+      border: 2px solid oklch(0.965 0.018 83 / 0.75);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: oklch(0.965 0.018 83 / 0.75);
+    }
+
+    .ai-step {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 14px;
+      padding: 18px;
+      background: oklch(0.3 0.04 72);
+    }
+
+    .ai-step b {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--water);
+      border-radius: 50%;
+      color: var(--water);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    }
+
+    .ai-step p {
+      margin: 4px 0 0;
     }
 
     .field-map {
@@ -635,6 +849,35 @@
       display: grid;
       gap: 32px;
       align-items: start;
+    }
+
+    .local-loop {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .loop-step {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .loop-step b {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--soil);
+      border-radius: 50%;
+      background: var(--harvest);
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    }
+
+    .loop-step p {
+      margin: 0;
+      color: var(--soil-soft);
     }
 
     .impact-panel {
@@ -850,12 +1093,17 @@
     }
 
     .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 650ms var(--ease), transform 650ms var(--ease);
     }
 
-    .reveal.is-visible {
+    .js .reveal.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -877,6 +1125,16 @@
 
       .section-head {
         grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.62fr);
+      }
+
+      .hero-proof,
+      .care-switchboard,
+      .ops-board {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .care-switchboard {
+        grid-template-columns: 1fr 1.2fr;
       }
 
       .ways-grid {
@@ -904,7 +1162,8 @@
 
       .field-layout,
       .split,
-      .waitlist-grid {
+      .waitlist-grid,
+      .ai-layout {
         grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
       }
 
@@ -962,6 +1221,14 @@
         width: 100%;
       }
 
+      .hero-proof {
+        margin-top: 24px;
+      }
+
+      .ledger-row {
+        grid-template-columns: 1fr;
+      }
+
       h1 {
         font-size: 2.45rem;
       }
@@ -992,7 +1259,7 @@
         scroll-behavior: auto !important;
       }
 
-      .reveal {
+      .js .reveal {
         opacity: 1;
         transform: none;
       }
@@ -1012,11 +1279,12 @@
       <span>Grow<br>Chiang Mai</span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#pilot">Pilot</a>
       <a href="#memberships">Memberships</a>
       <a href="#pricing">Pricing</a>
-      <a href="#farm">The farm</a>
+      <a href="#farm">Farm plan</a>
+      <a href="#ai">AI grow</a>
       <a href="#cafe">Cafe</a>
-      <a href="#impact">Impact</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="button secondary" href="#waitlist">Join waitlist</a>
@@ -1030,17 +1298,65 @@
       </picture>
       <div class="hero-content">
         <p class="eyebrow">Founding plots outside Chiang Mai</p>
-        <h1 id="hero-title">Your own growing plot, live on camera.</h1>
-        <p class="hero-copy">A garden membership for expats and long-stay visitors: small organic-method plots, local Thai caretakers, drip irrigation, real-time bed cameras, an AC farm cafe, and tools ready when you arrive.</p>
+        <h1 id="hero-title">Grow here. Watch your plot from town.</h1>
+        <p class="hero-copy">A Thai-run garden membership with small organic-method beds, two care choices, privacy-safe plot cameras, AI-assisted drip irrigation, local compost, an AC farm cafe, parking, and tools ready when you arrive.</p>
         <div class="hero-actions">
           <a class="button" href="#waitlist">Join the founding waitlist</a>
-          <p class="hero-note">First pilot target: 20 serious members before full farm buildout.</p>
+          <p class="hero-note">Professional start: prove 20 paid founding members before heavy cafe buildout.</p>
+        </div>
+        <div class="hero-proof" aria-label="Launch proof points">
+          <div class="proof-item">
+            <strong>2 rai target</strong>
+            <span>Only part of the land becomes paid plots at first.</span>
+          </div>
+          <div class="proof-item">
+            <strong>4-month cycle</strong>
+            <span>Discounted plan fits herbs and vegetable seasons.</span>
+          </div>
+          <div class="proof-item">
+            <strong>Two care modes</strong>
+            <span>DIY self-care or managed caretaker service.</span>
+          </div>
+          <div class="proof-item">
+            <strong>Camera rules</strong>
+            <span>Crops visible, people and neighbors protected.</span>
+          </div>
         </div>
       </div>
       <aside class="camera-tag" aria-label="Camera update note">
         <strong>Live Plot View</strong>
         <span>Members can check their own bed in real time. Cameras point at crops, not visitors or neighbors.</span>
       </aside>
+    </section>
+
+    <section class="band pilot-band" id="pilot" aria-labelledby="pilot-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-kicker">Professional pilot</p>
+            <h2 id="pilot-title">Start with the smallest version that can prove demand.</h2>
+          </div>
+          <p>The critique is simple: do not build the full dream before the market proves it. Use a 2-rai land story, but sell only the first measured beds, then expand from real member behavior.</p>
+        </div>
+        <div class="pilot-ledger reveal" aria-label="Pilot launch decisions">
+          <div class="ledger-row">
+            <span class="label">Land</span>
+            <p><strong>Target about 2 rai near Kakanok or another accessible village area.</strong> If the rented place already grows banana or other crops, keep that productive land rhythm while the first paid beds are tested. Confirm title, water, access, lease terms, and building permission with a local advisor before marketing a specific parcel.</p>
+          </div>
+          <div class="ledger-row">
+            <span class="label">Phase 1</span>
+            <p><strong>Sell 20 managed plots or 40 serious waitlist leads before building the cafe fully.</strong> Start with shade, clean toilet, parking, tool shed, water storage, compost zone, and one cool room before expensive construction.</p>
+          </div>
+          <div class="ledger-row">
+            <span class="label">Promise</span>
+            <p><strong>Membership service, not land ownership.</strong> Members pay for plot access, caretaker work, camera updates, learning, equipment access, and harvest options. Legal wording must stay careful.</p>
+          </div>
+          <div class="ledger-row">
+            <span class="label">Proof</span>
+            <p><strong>Measure visits, camera usage, harvest satisfaction, and cafe spend.</strong> These numbers tell you whether the business is a farm club, a workshop venue, a cafe with plots, or a managed-garden subscription.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="band tight" id="memberships" aria-labelledby="memberships-title">
@@ -1050,7 +1366,27 @@
             <p class="section-kicker">Three ways to grow</p>
             <h2 id="memberships-title">Subscription plots with a better 4-month price.</h2>
           </div>
-          <p>Start with a monthly plan, then reward longer stays with a 4-month discount. Camera access turns the plot into something members can actually check from town.</p>
+          <p>Start with a monthly plan, then reward longer stays with a 4-month discount. The core choice is care: members either grow by themselves, or they pay the farm team to keep the bed alive.</p>
+        </div>
+        <div class="care-switchboard reveal" aria-label="Care model comparison">
+          <article class="care-choice">
+            <h3>Self-care member</h3>
+            <p>Best for people who enjoy visiting the farm. They handle planting, weeding, light watering, harvest, and crop decisions. The farm provides access, basic guidance, shared tools, compost options, cafe comfort, and optional camera.</p>
+            <div class="tag-list">
+              <span class="tag">Lower monthly price</span>
+              <span class="tag">Tool rental revenue</span>
+              <span class="tag">Workshop upsell</span>
+            </div>
+          </article>
+          <article class="care-choice featured">
+            <h3>Managed by us</h3>
+            <p>Best for busy expats, retirees, and travelers. Thai caretakers plant, water, feed, weed, document, and replant when needed. The member gets camera access, field notes, visit days, and harvest options.</p>
+            <div class="tag-list">
+              <span class="tag">Higher margin</span>
+              <span class="tag">Camera included</span>
+              <span class="tag">Better retention</span>
+            </div>
+          </article>
         </div>
         <div class="ways-grid">
           <article class="package featured reveal" style="--i: 0">
@@ -1058,7 +1394,7 @@
             <div>
               <p class="section-kicker">Best first offer</p>
               <h3>Live Managed Plot</h3>
-              <p>We plant, water, feed, weed, and keep the camera view ready. You watch, visit, harvest, or donate your crop share.</p>
+              <p>The flagship offer. We plant, water, feed, weed, log field notes, and keep the camera view ready. You watch, visit, harvest, receive delivery, or donate your crop share.</p>
             </div>
             <div class="price">THB 3,200 <span>/ month</span></div>
             <p class="deal-note">4 months: THB 11,520 total, about 10% less.</p>
@@ -1067,7 +1403,7 @@
               <li>Real-time private camera view of your bed</li>
               <li>Local caretaker support and field notes</li>
               <li>Natural compost and drip irrigation included</li>
-              <li>Harvest pickup, visit day, or donation option</li>
+              <li>Harvest pickup, delivery add-on, visit day, or donation option</li>
             </ul>
           </article>
 
@@ -1076,7 +1412,7 @@
             <div>
               <p class="section-kicker">Hands-on</p>
               <h3>DIY Plot Club</h3>
-              <p>Your bed, your pace. Drive in, park, rent the tool kit, cool down in the cafe, and get weekend guidance.</p>
+              <p>Your bed, your pace. Drive in, park, rent the clean tool kit, cool down in the cafe, and get weekend guidance without paying for daily caretaker work.</p>
             </div>
             <div class="price">THB 1,500 <span>/ month</span></div>
             <p class="deal-note">4 months: THB 5,400 total, about 10% less.</p>
@@ -1085,6 +1421,7 @@
               <li>Basic shared tools, seed add-ons, and paid kit rental</li>
               <li>Beginner crop calendar</li>
               <li>Live camera add-on for THB 350/month</li>
+              <li>Caretaker rescue visit available as a paid add-on</li>
             </ul>
           </article>
 
@@ -1093,7 +1430,7 @@
             <div>
               <p class="section-kicker">Family size</p>
               <h3>Family Plot Plus</h3>
-              <p>A larger bed for families or couples who want managed care, live camera, cafe comfort, and harvest days.</p>
+              <p>A larger bed for families or couples who want managed care, live camera, cafe comfort, child-friendly visit days, and simple harvest planning.</p>
             </div>
             <div class="price">THB 4,800 <span>/ month</span></div>
             <p class="deal-note">4 months: THB 17,280 total, about 10% less.</p>
@@ -1162,6 +1499,42 @@
             <span>THB 1,260</span>
             <span>For DIY members who want a private bed camera.</span>
           </div>
+          <div class="pricing-row">
+            <strong>AI grow support</strong>
+            <span>Included in pilot</span>
+            <span>Review after 4 months</span>
+            <span>Use it as a trust feature first, then price it only after members value it.</span>
+          </div>
+          <div class="pricing-row">
+            <strong>Caretaker rescue visit</strong>
+            <span>THB 250 to 400</span>
+            <span>As needed</span>
+            <span>For DIY members who miss watering, need replanting, or want pest help.</span>
+          </div>
+          <div class="pricing-row">
+            <strong>Tool kit rental</strong>
+            <span>THB 150/day</span>
+            <span>THB 600/month</span>
+            <span>Clean hand tools, gloves, watering can, boots if sizes are available.</span>
+          </div>
+        </div>
+        <div class="ops-board reveal" aria-label="What to prove before expanding">
+          <div class="ops-cell">
+            <h3>Before cafe buildout</h3>
+            <p>Reach 20 paid managed plots or 40 strong waitlist leads. A cool room, toilets, water, and parking come before a full restaurant.</p>
+          </div>
+          <div class="ops-cell">
+            <h3>Before AI pricing</h3>
+            <p>Track whether members actually read field notes, watch cameras, and trust irrigation decisions. Charge only when the habit is real.</p>
+          </div>
+          <div class="ops-cell">
+            <h3>Before organic claims</h3>
+            <p>Use organic-method language, keep compost/input records, and avoid certified organic claims until paperwork and audits are real.</p>
+          </div>
+          <div class="ops-cell">
+            <h3>Before expansion</h3>
+            <p>Know the monthly caretaker hours per plot, crop failure rate, camera data cost, cafe spend per visit, and tool loss rate.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1170,15 +1543,16 @@
       <div class="wrap field-layout">
         <div class="reveal">
           <p class="section-kicker">Pilot farm shape</p>
-          <h2 id="farm-title">A 1-rai pilot built for care, not speculation.</h2>
+          <h2 id="farm-title">A 2-rai site, with only the first beds sold.</h2>
           <p>Grow Chiang Mai operates as a Thai-run farm service. Members buy access, care, learning, updates, and community. They do not buy land, own land, or receive a careless land promise.</p>
           <ul class="plain-list" aria-label="Farm infrastructure">
-            <li>30 to 50 small plots with clear paths and seasonal crop rotation.</li>
-            <li>Drip irrigation, water storage, compost/vermicompost area, cafe, and tool shed.</li>
+            <li>Start with 20 to 30 small plots, then expand toward 50 only after demand is proven.</li>
+            <li>Keep banana, herb, or cover-crop areas around beds so the land stays visibly productive.</li>
+            <li>Drip irrigation, water storage, compost/vermicompost area, cool room, and tool shed.</li>
             <li>Live bed cameras with privacy signage before any member access.</li>
-            <li>Founding parcel preference: Mae Rim, Mae Taeng, San Sai, Doi Saket, or Hang Dong.</li>
+            <li>Founding parcel preference: near Kakanok if access, water, title, and permissions are clean, otherwise Mae Rim, Mae Taeng, San Sai, Doi Saket, or Hang Dong.</li>
           </ul>
-          <p class="warning">Trust note: we describe the farm as organic-method growing until certification is complete. Land access, visitor rules, and live camera rules are written clearly before paid memberships begin.</p>
+          <p class="warning">Trust note: existing banana rows can stay as a practical farm backdrop while the membership beds prove demand. Paid member promises should focus on service, access, care, safety, and harvest expectations.</p>
         </div>
         <div class="field-map reveal" aria-label="Schematic farm map">
           <div class="map-plots" aria-hidden="true">
@@ -1195,6 +1569,50 @@
           <div class="map-label camera">live bed camera</div>
           <div class="map-label compost">compost</div>
           <div class="map-label caretaker">caretaker path</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band ai-band" id="ai" aria-labelledby="ai-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-kicker">AI grow agent</p>
+            <h2 id="ai-title">Use AI to help the caretaker, not replace the farmer.</h2>
+          </div>
+          <p>The strongest AI story is not a chatbot gimmick. It is a practical field assistant: watch soil moisture, check weather, recommend drip timing, summarize field notes, and flag problems early.</p>
+        </div>
+        <div class="ai-layout">
+          <div class="ai-panel reveal">
+            <h3>What the agent can do in phase 1</h3>
+            <p>Start with rules that are easy to inspect. If the soil is dry, no rain is forecast, and the bed is in an allowed watering window, the system can suggest or trigger drip irrigation. A caretaker still reviews crop health, pests, and harvest decisions.</p>
+            <ul class="plain-list">
+              <li>Soil moisture and weather-aware drip schedules.</li>
+              <li>Camera snapshots summarized into weekly field notes.</li>
+              <li>Pest or leaf-stress photo triage for the caretaker.</li>
+              <li>Member updates: what changed, what was watered, what is ready soon.</li>
+              <li>Manual override for every irrigation and camera decision.</li>
+            </ul>
+            <p class="warning">AI should never promise guaranteed harvests. It helps reduce missed care, but farming still has weather, insects, disease, and human judgment.</p>
+          </div>
+          <div class="ai-steps reveal" aria-label="AI grow workflow">
+            <div class="ai-step">
+              <b>1</b>
+              <div><strong>Sense</strong><p>Moisture sensor, weather forecast, camera still, caretaker note.</p></div>
+            </div>
+            <div class="ai-step">
+              <b>2</b>
+              <div><strong>Decide</strong><p>Agent checks crop stage, rain risk, water window, and bed rules.</p></div>
+            </div>
+            <div class="ai-step">
+              <b>3</b>
+              <div><strong>Act</strong><p>Drip starts automatically only inside safe limits, or asks the caretaker first.</p></div>
+            </div>
+            <div class="ai-step">
+              <b>4</b>
+              <div><strong>Report</strong><p>Member sees a short note, not a confusing data dashboard.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1252,13 +1670,31 @@
         <div class="impact-panel reveal">
           <p class="section-kicker">Local loop</p>
           <h2 id="impact-title">The social impact has to be operational.</h2>
-          <p>Good intent is not enough. The farm shows where the work and money move.</p>
+          <p>Good intent is not enough. The farm should show where the work, waste, soil, and money move.</p>
           <ul class="plain-list">
             <li>Paid work for village caretakers, workshop guides, and farm support.</li>
-            <li>Natural inputs sourced from hilltribe or minority suppliers when traceable.</li>
+            <li>Natural inputs sourced from local compost, rice husk, banana waste, leaf mold, or traceable minority and hilltribe suppliers when available.</li>
             <li>Optional sponsor beds for schools, temples, or community food projects.</li>
             <li>Clear field notes and camera rules so members see crops without exposing people.</li>
           </ul>
+          <div class="local-loop" aria-label="Local compost loop">
+            <div class="loop-step">
+              <b>1</b>
+              <p><strong>Collect clean local waste.</strong> Banana stems, leaves, cafe grounds, rice husk, and vegetable trimmings can become compost when sorted properly.</p>
+            </div>
+            <div class="loop-step">
+              <b>2</b>
+              <p><strong>Pay for useful inputs.</strong> Buy compost or fertilizer from local producers when quality is clear. This makes the support local message real.</p>
+            </div>
+            <div class="loop-step">
+              <b>3</b>
+              <p><strong>Reduce burn pressure carefully.</strong> Do not claim the farm stops burning season. Say it creates a small paid alternative for clean organic material.</p>
+            </div>
+            <div class="loop-step">
+              <b>4</b>
+              <p><strong>Show member evidence.</strong> Field notes can list compost batches, input sources, and crop beds that used them.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1305,9 +1741,19 @@
               <span class="error-text" id="package-error">Please choose a package interest.</span>
             </div>
             <div class="field">
+              <label for="care">Care preference</label>
+              <select id="care" name="care">
+                <option>I want the farm team to take care of the bed</option>
+                <option>I want to take care of it myself</option>
+                <option>I want DIY with rescue visits if I miss a week</option>
+                <option>I want to compare both prices first</option>
+              </select>
+            </div>
+            <div class="field">
               <label for="area">Preferred area</label>
               <select id="area" name="area">
                 <option>Any quiet village near Chiang Mai</option>
+                <option>Near Kakanok if suitable</option>
                 <option>Mae Rim</option>
                 <option>Mae Taeng</option>
                 <option>San Sai</option>
@@ -1326,7 +1772,7 @@
             </div>
             <div class="field">
               <label for="notes">What would make this useful for you?</label>
-              <textarea id="notes" name="notes" placeholder="Example: real-time camera, AC cafe, kid-friendly days, delivery, rented tools, Thai herbs"></textarea>
+              <textarea id="notes" name="notes" placeholder="Example: real-time camera, AI drip irrigation, AC cafe, kid-friendly days, delivery, rented tools, Thai herbs"></textarea>
             </div>
             <label class="check-field" data-field="consent">
               <input id="consent" name="consent" type="checkbox" required>
@@ -1361,6 +1807,22 @@
           <details>
             <summary>Can I watch my plot on camera?</summary>
             <p>Yes, that is the main premium feature. Live Plot View should point only at the member bed, with no audio, no visitor surveillance, signage on site, and one private access link per plot.</p>
+          </details>
+          <details>
+            <summary>Can AI water my plot automatically?</summary>
+            <p>In the pilot, AI-assisted irrigation should start with strict rules: soil moisture, weather forecast, time window, bed type, and manual override. Managed plots can include this as a trust feature, while DIY members can choose it as an add-on after the system proves useful.</p>
+          </details>
+          <details>
+            <summary>Why make the 4-month plan cheaper?</summary>
+            <p>Four months is long enough to plan a crop cycle and short enough for long-stay visitors. The discount also reduces churn, makes caretaker scheduling easier, and gives members a clear reason to stay through harvest.</p>
+          </details>
+          <details>
+            <summary>What is the local fertilizer story?</summary>
+            <p>The professional version is traceable, not vague. Buy quality compost or natural inputs from local producers, collect clean organic waste when it can be processed safely, and show field notes. Do not overclaim that this solves burning season.</p>
+          </details>
+          <details>
+            <summary>Why keep banana rows on the land?</summary>
+            <p>If the rented place already grows banana, keep it. It gives the farm a real productive backdrop while the paid beds prove demand. The public promise should be agricultural care, soil improvement, local inputs, and a good member experience.</p>
           </details>
           <details>
             <summary>What happens if my crop fails?</summary>

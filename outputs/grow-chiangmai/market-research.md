@@ -36,3 +36,12 @@ The 4-month plan uses a 10% discount. Four months is a good fit because many her
 - Cafe should be small at first: AC room, iced drinks, water, clean toilet, member check-in, and a table for laptop use.
 - Tool rentals should be simple, washable, and low-risk. Power equipment should stay supervised by caretakers.
 - First pilot target: 20 paying members or 40 serious waitlist leads before committing to expensive cafe buildout.
+
+## Critique-led Additions
+
+- Position the business as a Thai-run farm service, not a plot lease or land product. The member buys care, access, learning, camera visibility, harvest options, and comfort.
+- Separate two price logics clearly: DIY self-care should be cheaper and visit-driven; managed care should be the recurring premium product with caretaker notes and camera included.
+- Treat AI as an operational assistant, not a marketing trick. Phase 1 should focus on soil moisture, weather-aware drip irrigation, camera snapshots, field-note summaries, pest photo triage, and manual override.
+- Keep a 2-rai land story professional: only sell the first 20 to 30 beds, keep existing banana or cover-crop rows productive if the rented place already has them, and verify title, lease terms, water, access, and construction permissions locally.
+- The local fertilizer story should be traceable. Buy useful compost or natural inputs from local producers, process clean organic waste where safe, and avoid broad claims about solving burning season.
+- Before expanding, measure caretaker hours per plot, camera data cost, member camera usage, crop failure rate, cafe spend per visit, tool loss, and 4-month renewal rate.
