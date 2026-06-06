@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Grow Chiang Mai is a garden membership outside Chiang Mai with live plot cameras, local caretaker care, organic-method growing beds, an AC farm cafe, and rental tools.">
+  <meta name="description" content="Reserve interest in a small garden plot outside Chiang Mai. Visit when you can, or let local caretakers grow it for you with privacy-safe plot cameras and no payment today.">
   <title>Grow Chiang Mai | Live Plot Garden Membership</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -371,6 +371,96 @@
         linear-gradient(135deg, oklch(0.87 0.11 96 / 0.42), transparent 42%),
         var(--paper);
     }
+
+    .hero-secondary {
+      background: oklch(0.985 0.012 86 / 0.92);
+    }
+
+    .mission-board {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mission-card {
+      display: grid;
+      gap: 12px;
+      padding: 20px;
+      border: 2px solid var(--soil);
+      border-radius: var(--radius);
+      background: var(--paper-pale);
+      box-shadow: 6px 6px 0 oklch(0.7 0.05 78);
+    }
+
+    .mission-card.priority {
+      background: var(--sun);
+      box-shadow: 8px 8px 0 var(--soil);
+    }
+
+    .mission-card h3 {
+      margin: 0;
+      color: var(--leaf-dark);
+      font-size: 1.45rem;
+    }
+
+    .mission-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mission-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 1px solid oklch(0.34 0.055 58 / 0.42);
+      border-radius: 999px;
+      background: oklch(0.985 0.012 86 / 0.78);
+      color: var(--soil);
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .mission-card p {
+      margin: 0;
+      color: var(--soil-soft);
+    }
+
+    .mission-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--soil-soft);
+    }
+
+    .proof-strip {
+      display: grid;
+      gap: 1px;
+      margin-top: 26px;
+      border: 2px solid var(--soil);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--soil);
+    }
+
+    .proof-strip div {
+      padding: 18px;
+      background: var(--leaf-soft);
+    }
+
+    .proof-strip strong {
+      display: block;
+      margin-bottom: 4px;
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      color: var(--leaf-dark);
+      font-size: 1.12rem;
+    }
+
+    .form-note {
+      margin: -2px 0 0;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
 
     .wrap {
       width: min(1180px, 100%);
@@ -1098,14 +1188,14 @@
     }
 
     .js .reveal {
-      opacity: 0;
-      transform: translateY(18px);
+      opacity: 1;
+      transform: none;
       transition: opacity 650ms var(--ease), transform 650ms var(--ease);
     }
 
     .js .reveal.is-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
     @media (min-width: 720px) {
@@ -1144,6 +1234,14 @@
 
       .research-grid,
       .service-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .mission-board {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .proof-strip {
         grid-template-columns: repeat(3, 1fr);
       }
 
@@ -1280,6 +1378,7 @@
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#pilot">Pilot</a>
+      <a href="#missions">Missions</a>
       <a href="#memberships">Memberships</a>
       <a href="#pricing">Pricing</a>
       <a href="#farm">Farm plan</a>
@@ -1287,7 +1386,7 @@
       <a href="#cafe">Cafe</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="button secondary" href="#waitlist">Join waitlist</a>
+    <a class="button secondary" href="#waitlist">Join founding list</a>
   </header>
 
   <main id="main">
@@ -1297,35 +1396,36 @@
         <img src="https://images.unsplash.com/photo-1773994788915-7fb0f462f223?auto=format&fit=crop&w=1200&q=76" alt="Rows of vegetables growing in a garden with hills beyond">
       </picture>
       <div class="hero-content">
-        <p class="eyebrow">Founding plots outside Chiang Mai</p>
-        <h1 id="hero-title">Grow here. Watch your plot from town.</h1>
-        <p class="hero-copy">A Thai-run garden membership with small organic-method beds, two care choices, privacy-safe plot cameras, AI-assisted drip irrigation, local compost, an AC farm cafe, parking, and tools ready when you arrive.</p>
+        <p class="eyebrow">Founding garden plots outside Chiang Mai</p>
+        <h1 id="hero-title">Your own small farm bed, cared for while you are in town.</h1>
+        <p class="hero-copy">Reserve a garden plot outside Chiang Mai. Visit when you can, or let local caretakers plant, water, and send simple updates while you watch your bed on a privacy-safe camera.</p>
         <div class="hero-actions">
-          <a class="button" href="#waitlist">Join the founding waitlist</a>
-          <p class="hero-note">Professional start: prove 20 paid founding members before heavy cafe buildout.</p>
+          <a class="button" href="#waitlist">Join founding list — no payment today</a>
+          <a class="button secondary hero-secondary" href="#memberships">Compare plot plans</a>
+          <p class="hero-note">Pilot discipline: prove 20 paid founding members before building the full cafe dream.</p>
         </div>
         <div class="hero-proof" aria-label="Launch proof points">
           <div class="proof-item">
-            <strong>2 rai target</strong>
-            <span>Only part of the land becomes paid plots at first.</span>
+            <strong>First 20 plots</strong>
+            <span>Small founding group before expansion.</span>
           </div>
           <div class="proof-item">
-            <strong>4-month cycle</strong>
-            <span>Discounted plan fits herbs and vegetable seasons.</span>
+            <strong>No payment today</strong>
+            <span>We confirm bed, care, and location personally first.</span>
           </div>
           <div class="proof-item">
             <strong>Two care modes</strong>
-            <span>DIY self-care or managed caretaker service.</span>
+            <span>DIY visits or managed caretaker service.</span>
           </div>
           <div class="proof-item">
-            <strong>Camera rules</strong>
-            <span>Crops visible, people and neighbors protected.</span>
+            <strong>Privacy-safe camera</strong>
+            <span>Crops visible; people and neighbors protected.</span>
           </div>
         </div>
       </div>
       <aside class="camera-tag" aria-label="Camera update note">
         <strong>Live Plot View</strong>
-        <span>Members can check their own bed in real time. Cameras point at crops, not visitors or neighbors.</span>
+        <span>Check your own bed from town. Camera access is private, crop-focused, and confirmed before launch.</span>
       </aside>
     </section>
 
@@ -1334,9 +1434,9 @@
         <div class="section-head reveal">
           <div>
             <p class="section-kicker">Professional pilot</p>
-            <h2 id="pilot-title">Start with the smallest version that can prove demand.</h2>
+            <h2 id="pilot-title">Start small, prove demand, then build the beautiful farm.</h2>
           </div>
-          <p>The critique is simple: do not build the full dream before the market proves it. Use a 2-rai land story, but sell only the first measured beds, then expand from real member behavior.</p>
+          <p>We are turning the critique into the operating plan: sell a small founding group first, learn from real members, then expand the cafe, cameras, beds, and workshops only when demand is proven.</p>
         </div>
         <div class="pilot-ledger reveal" aria-label="Pilot launch decisions">
           <div class="ledger-row">
@@ -1359,14 +1459,73 @@
       </div>
     </section>
 
+    <section class="band" id="missions" aria-labelledby="missions-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-kicker">Kanban missions</p>
+            <h2 id="missions-title">Four focused missions turn the critique into launch work.</h2>
+          </div>
+          <p>This is the execution board for the founding pilot: prove demand first, make the offer easy to understand, capture real leads, then only expand what members actually use.</p>
+        </div>
+        <div class="mission-board reveal" aria-label="Launch mission board">
+          <article class="mission-card priority">
+            <div class="mission-meta"><span class="mission-tag">Mission 1</span><span class="mission-tag">Doing now</span></div>
+            <h3>Founding demand proof</h3>
+            <p>Reach 40 serious waitlist leads or 20 paid managed-plot commitments before expensive cafe buildout.</p>
+            <ul>
+              <li>Track package interest and preferred area.</li>
+              <li>Confirm no-payment follow-up path.</li>
+              <li>Measure managed vs DIY demand.</li>
+            </ul>
+          </article>
+          <article class="mission-card">
+            <div class="mission-meta"><span class="mission-tag">Mission 2</span><span class="mission-tag">Conversion</span></div>
+            <h3>Customer clarity</h3>
+            <p>Make the first screen answer what members get, who cares for the bed, where it is, and what happens after joining.</p>
+            <ul>
+              <li>Shorten strategy copy.</li>
+              <li>Repeat “no payment today”.</li>
+              <li>Show the simple 5-step member journey.</li>
+            </ul>
+          </article>
+          <article class="mission-card">
+            <div class="mission-meta"><span class="mission-tag">Mission 3</span><span class="mission-tag">Trust</span></div>
+            <h3>Local proof pack</h3>
+            <p>Replace generic promise with real land, water, caretaker, camera-angle, parking, toilet, and crop-calendar evidence as soon as available.</p>
+            <ul>
+              <li>Add real site photos.</li>
+              <li>Document camera privacy rules.</li>
+              <li>Keep organic claims careful.</li>
+            </ul>
+          </article>
+          <article class="mission-card">
+            <div class="mission-meta"><span class="mission-tag">Mission 4</span><span class="mission-tag">Lead ops</span></div>
+            <h3>Real waitlist backend</h3>
+            <p>Move from browser-only prototype saving to a real lead destination before public promotion.</p>
+            <ul>
+              <li>Airtable, Google Sheets, Supabase, or Vercel API.</li>
+              <li>Send confirmation and owner notification.</li>
+              <li>Export leads by package and area.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="proof-strip reveal" aria-label="Pilot acceptance metrics">
+          <div><strong>Launch gate</strong><span>40 qualified leads or 20 paid founding commitments.</span></div>
+          <div><strong>Member proof</strong><span>Visit rhythm, camera usage, harvest satisfaction, and caretaker hours tracked.</span></div>
+          <div><strong>Expansion rule</strong><span>Build cafe/workshops only after real member behavior supports them.</span></div>
+        </div>
+      </div>
+    </section>
+
     <section class="band tight" id="memberships" aria-labelledby="memberships-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
             <p class="section-kicker">Three ways to grow</p>
-            <h2 id="memberships-title">Subscription plots with a better 4-month price.</h2>
+            <h2 id="memberships-title">Choose how much help you want from the farm team.</h2>
           </div>
-          <p>Start with a monthly plan, then reward longer stays with a 4-month discount. The core choice is care: members either grow by themselves, or they pay the farm team to keep the bed alive.</p>
+          <p>Every plan starts as a founding-member conversation. Pick the care style that fits your life; we confirm location, crop season, camera setup, and visit rules before taking payment.</p>
         </div>
         <div class="care-switchboard reveal" aria-label="Care model comparison">
           <article class="care-choice">
@@ -1450,9 +1609,9 @@
         <div class="section-head reveal">
           <div>
             <p class="section-kicker">Launch pricing logic</p>
-            <h2 id="pricing-title">Charge for care, camera trust, and a comfortable place to arrive.</h2>
+            <h2 id="pricing-title">Simple launch pricing, with the 4-month crop cycle rewarded.</h2>
           </div>
-          <p>Chiang Mai already has affordable coworking and farm workshops. Grow Chiang Mai can sit above a day activity because members get a real bed, ongoing care, camera visibility, and a place to return.</p>
+          <p>The price is for an ongoing bed, care, camera visibility, and a comfortable place to return — not a one-day farm tour and not a vague land promise.</p>
         </div>
         <div class="research-grid">
           <div class="research-card reveal">
@@ -1703,8 +1862,8 @@
       <div class="wrap waitlist-grid">
         <div class="waitlist-copy reveal">
           <p class="section-kicker">Founding member list</p>
-          <h2 id="waitlist-title">Reserve interest before the first beds are cut.</h2>
-          <p>Tell us what kind of garden membership you want. We will use this to choose the first land parcel, caretaker plan, cafe size, camera setup, and workshop calendar.</p>
+          <h2 id="waitlist-title">Join the founding list — no payment today.</h2>
+          <p>Tell us the kind of garden membership you want. We will use this to choose the first parcel, caretaker plan, camera setup, cafe comfort, and workshop calendar.</p>
           <ul class="plain-list">
             <li>No payment is taken when you join the founding list.</li>
             <li>We follow up personally before confirming any bed or workshop date.</li>
@@ -1779,7 +1938,8 @@
               <span>I agree to receive Grow Chiang Mai founding-member updates.</span>
             </label>
             <span class="error-text" id="consent-error">Please confirm you want founding-member updates.</span>
-            <button class="button" type="submit">Save my waitlist interest</button>
+            <button class="button" type="submit">Save my founding interest</button>
+            <p class="form-note">Prototype note: this static demo saves your entry in this browser. Connect Airtable, Supabase, Google Sheets, or a Vercel API route before using it for real leads.</p>
             <p class="status" id="formStatus" role="status" aria-live="polite"></p>
           </div>
         </form>
