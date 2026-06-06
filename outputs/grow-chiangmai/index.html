@@ -3,76 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="A more executable Chiang Mai farm business: sell farm-day experiences and retreat/group visits first, then convert proven demand into a small Harvest Bed Club with weekly updates.">
-  <title>Grow Chiang Mai | Farm Day & Harvest Bed Club</title>
+  <meta name="description" content="Grow Chiang Mai is a simple farm-day experience first, with Harvest Bed Club offered later to warm visitors who want weekly crop updates.">
+  <title>Grow Chiang Mai | Farm Days First</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;700;800&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
       --paper: oklch(0.965 0.018 83);
-      --paper-deep: oklch(0.91 0.04 82);
-      --paper-pale: oklch(0.985 0.012 86);
-      --soil: oklch(0.34 0.055 58);
-      --soil-soft: oklch(0.43 0.045 62);
-      --leaf: oklch(0.47 0.11 142);
-      --leaf-dark: oklch(0.34 0.09 144);
-      --leaf-soft: oklch(0.83 0.08 135);
-      --harvest: oklch(0.82 0.13 86);
-      --sun: oklch(0.87 0.11 96);
-      --clay: oklch(0.58 0.105 42);
+      --paper-soft: oklch(0.985 0.012 86);
+      --field: oklch(0.90 0.055 118);
+      --soil: oklch(0.30 0.055 58);
+      --soil-2: oklch(0.43 0.045 62);
+      --leaf: oklch(0.45 0.12 142);
+      --leaf-dark: oklch(0.31 0.09 144);
+      --harvest: oklch(0.84 0.15 88);
+      --clay: oklch(0.58 0.11 42);
       --water: oklch(0.78 0.07 205);
-      --charcoal: oklch(0.27 0.035 72);
-      --ink-muted: oklch(0.45 0.03 96);
       --line: oklch(0.77 0.035 82);
       --error: oklch(0.5 0.12 25);
-      --success: oklch(0.47 0.11 142);
-      --shadow: 0 24px 80px oklch(0.28 0.04 60 / 0.18);
-      --radius: 8px;
-      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+      --radius: 20px;
+      --shadow: 0 28px 70px oklch(0.28 0.04 60 / 0.18);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
       color-scheme: light;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background:
-        linear-gradient(90deg, oklch(0.9 0.018 82 / 0.3) 1px, transparent 1px) 0 0 / 28px 28px,
-        var(--paper);
       color: var(--soil);
+      background:
+        radial-gradient(circle at top left, oklch(0.88 0.12 88 / 0.55), transparent 34rem),
+        linear-gradient(90deg, oklch(0.9 0.018 82 / 0.38) 1px, transparent 1px) 0 0 / 30px 30px,
+        var(--paper);
       font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
-      font-size: 1rem;
-      line-height: 1.55;
-      letter-spacing: 0;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration-thickness: 0.08em;
-      text-underline-offset: 0.18em;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-      letter-spacing: 0;
-    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
 
     .skip-link {
       position: fixed;
@@ -80,15 +53,12 @@
       left: 12px;
       z-index: 20;
       transform: translateY(-160%);
+      padding: 10px 14px;
+      border-radius: 999px;
       background: var(--soil);
-      color: var(--paper-pale);
-      padding: 12px 16px;
-      border-radius: var(--radius);
+      color: var(--paper-soft);
     }
-
-    .skip-link:focus {
-      transform: translateY(0);
-    }
+    .skip-link:focus { transform: none; }
 
     .site-header {
       position: sticky;
@@ -98,1269 +68,357 @@
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: 16px;
-      padding: 14px max(16px, env(safe-area-inset-left)) 14px max(16px, env(safe-area-inset-right));
-      background: var(--paper);
-      border-bottom: 1px solid oklch(0.77 0.035 82 / 0.75);
+      padding: 14px clamp(16px, 4vw, 54px);
+      background: oklch(0.965 0.018 83 / 0.88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
     }
 
     .brand-mark {
       display: inline-flex;
       align-items: center;
-      min-height: 48px;
       gap: 10px;
       text-decoration: none;
       font-family: "Bricolage Grotesque", system-ui, sans-serif;
       font-weight: 800;
-      font-size: 1.08rem;
-      line-height: 1;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
     }
-
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      color: var(--leaf-dark);
-    }
-
-    .brand-mark span {
-      display: block;
-    }
+    .brand-icon { width: 38px; height: 38px; color: var(--leaf-dark); }
 
     .nav-links {
       display: none;
       align-items: center;
-      gap: 14px;
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: 0.92rem;
+      gap: 20px;
+      color: var(--soil-2);
+      font-size: 0.94rem;
     }
-
-    .nav-links a {
-      text-decoration: none;
-      padding: 12px 2px;
-    }
-
-    .nav-links a:focus-visible,
-    .brand-mark:focus-visible,
-    .button:focus-visible,
-    summary:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
-      outline: 3px solid var(--harvest);
-      outline-offset: 3px;
-    }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--leaf-dark); }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       min-height: 48px;
-      padding: 14px 20px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--harvest);
-      color: var(--soil);
-      text-decoration: none;
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--leaf-dark);
+      color: var(--paper-soft);
       font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 14px 34px oklch(0.30 0.09 144 / 0.25);
       cursor: pointer;
-      box-shadow: 6px 6px 0 var(--soil);
-      transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), background-color 180ms var(--ease);
+      transition: transform 260ms var(--ease), background 260ms var(--ease);
     }
-
-    .button:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0 var(--soil);
-      background: oklch(0.86 0.14 86);
-    }
-
-    .button:active {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--soil);
-    }
-
+    .button:hover { transform: translateY(-2px); background: var(--soil); }
     .button.secondary {
-      background: var(--paper-pale);
+      background: var(--paper-soft);
+      color: var(--soil);
+      border: 1px solid var(--line);
       box-shadow: none;
     }
 
     .hero {
-      position: relative;
-      min-height: 82vh;
+      min-height: calc(100svh - 78px);
       display: grid;
-      align-items: end;
-      overflow: hidden;
+      align-items: stretch;
+      position: relative;
       isolation: isolate;
       background: var(--soil);
+      color: var(--paper-soft);
     }
-
     .hero-media {
       position: absolute;
       inset: 0;
-      z-index: -3;
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(1.05) contrast(1.02);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
       z-index: -2;
-      background:
-        linear-gradient(90deg, oklch(0.25 0.045 58 / 0.94) 0%, oklch(0.27 0.04 58 / 0.84) 48%, oklch(0.29 0.035 58 / 0.54) 100%),
-        linear-gradient(0deg, oklch(0.22 0.035 60 / 0.82), oklch(0.28 0.04 60 / 0.24) 58%);
     }
-
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; }
     .hero::after {
       content: "";
       position: absolute;
-      inset: auto 0 -1px;
-      height: 42px;
-      background: var(--paper);
-      clip-path: polygon(0 45%, 8% 60%, 18% 40%, 30% 58%, 42% 34%, 55% 55%, 67% 38%, 80% 60%, 91% 42%, 100% 54%, 100% 100%, 0 100%);
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, oklch(0.22 0.045 58 / 0.94), oklch(0.25 0.04 58 / 0.78) 46%, oklch(0.25 0.04 58 / 0.36)),
+        linear-gradient(0deg, oklch(0.19 0.035 60 / 0.8), transparent 56%);
     }
 
     .hero-content {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 72px 0 86px;
-      color: var(--paper-pale);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 0 20px;
-      color: var(--harvest);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-weight: 800;
-      font-size: 0.95rem;
-      letter-spacing: 0;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 18px;
-      height: 18px;
-      border: 2px solid currentColor;
-      border-radius: 50%;
-      box-shadow: inset 0 -6px 0 currentColor;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      line-height: 0.98;
-      letter-spacing: 0;
-      text-wrap: balance;
-    }
-
-    h1 {
-      max-width: 840px;
-      margin: 0;
-      font-size: 4.8rem;
-      font-weight: 800;
-    }
-
-    .hero-copy {
-      max-width: 620px;
-      margin: 24px 0 0;
-      color: oklch(0.95 0.018 83);
-      font-size: 1.18rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 18px;
-      margin-top: 32px;
-    }
-
-    .hero-note {
-      max-width: 260px;
-      color: oklch(0.92 0.035 86);
-      font-size: 0.96rem;
-    }
-
-    .hero-proof {
-      display: grid;
-      gap: 1px;
-      max-width: 720px;
-      margin-top: 34px;
-      border: 2px solid oklch(0.965 0.018 83 / 0.78);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: oklch(0.965 0.018 83 / 0.78);
-    }
-
-    .proof-item {
-      display: grid;
-      gap: 4px;
-      padding: 14px 16px;
-      background: oklch(0.31 0.045 58 / 0.78);
-    }
-
-    .proof-item strong {
-      color: var(--harvest);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.06rem;
-      line-height: 1.05;
-    }
-
-    .proof-item span {
-      color: oklch(0.94 0.018 83);
-      font-size: 0.92rem;
-    }
-
-    .camera-tag {
-      position: absolute;
-      right: 6%;
-      bottom: 74px;
-      width: min(270px, 42vw);
-      padding: 16px 18px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--paper-pale);
-      color: var(--soil);
-      box-shadow: var(--shadow);
-      transform: rotate(-2deg);
-    }
-
-    .camera-tag strong {
-      display: block;
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.08rem;
-      line-height: 1.1;
-    }
-
-    .camera-tag span {
-      display: block;
-      margin-top: 6px;
-      color: var(--ink-muted);
-      font-size: 0.9rem;
-    }
-
-    main {
-      overflow: hidden;
-    }
-
-    section[id] {
-      scroll-margin-top: 92px;
-    }
-
-    .band {
-      padding: 72px 16px;
-    }
-
-    .band.tight {
-      padding-top: 42px;
-    }
-
-    .pilot-band {
-      background:
-        linear-gradient(135deg, oklch(0.87 0.11 96 / 0.42), transparent 42%),
-        var(--paper);
-    }
-
-    .hero-secondary {
-      background: oklch(0.985 0.012 86 / 0.92);
-    }
-
-    .mission-board {
-      display: grid;
-      gap: 14px;
-    }
-
-    .mission-card {
-      display: grid;
-      gap: 12px;
-      padding: 20px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--paper-pale);
-      box-shadow: 6px 6px 0 oklch(0.7 0.05 78);
-    }
-
-    .mission-card.priority {
-      background: var(--sun);
-      box-shadow: 8px 8px 0 var(--soil);
-    }
-
-    .mission-card h3 {
-      margin: 0;
-      color: var(--leaf-dark);
-      font-size: 1.45rem;
-    }
-
-    .mission-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .mission-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 5px 9px;
-      border: 1px solid oklch(0.34 0.055 58 / 0.42);
-      border-radius: 999px;
-      background: oklch(0.985 0.012 86 / 0.78);
-      color: var(--soil);
-      font-size: 0.84rem;
-      font-weight: 800;
-    }
-
-    .mission-card p {
-      margin: 0;
-      color: var(--soil-soft);
-    }
-
-    .mission-card ul {
-      margin: 0;
-      padding-left: 20px;
-      color: var(--soil-soft);
-    }
-
-    .proof-strip {
-      display: grid;
-      gap: 1px;
-      margin-top: 26px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--soil);
-    }
-
-    .proof-strip div {
-      padding: 18px;
-      background: var(--leaf-soft);
-    }
-
-    .proof-strip strong {
-      display: block;
-      margin-bottom: 4px;
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      color: var(--leaf-dark);
-      font-size: 1.12rem;
-    }
-
-    .form-note {
-      margin: -2px 0 0;
-      color: var(--ink-muted);
-      font-size: 0.9rem;
-    }
-
-
-    .wrap {
       width: min(1180px, 100%);
       margin: 0 auto;
+      padding: clamp(80px, 14vw, 170px) clamp(18px, 5vw, 58px) clamp(44px, 8vw, 80px);
+      display: grid;
+      align-content: end;
+      gap: clamp(20px, 4vw, 36px);
     }
-
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 14px;
-      color: var(--leaf-dark);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    .eyebrow {
+      margin: 0;
+      width: max-content;
+      max-width: 100%;
+      padding: 8px 12px;
+      border: 1px solid oklch(0.95 0.02 90 / 0.32);
+      border-radius: 999px;
+      background: oklch(0.98 0.02 90 / 0.12);
+      color: var(--harvest);
       font-weight: 800;
-      font-size: 0.94rem;
+      font-size: 0.9rem;
     }
-
-    .section-kicker::after {
-      content: "";
-      width: 54px;
-      height: 2px;
-      background: var(--leaf);
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Bricolage Grotesque", system-ui, sans-serif;
+      letter-spacing: -0.045em;
+      line-height: 0.94;
     }
+    h1 {
+      max-width: 820px;
+      font-size: clamp(3.2rem, 11vw, 8.6rem);
+    }
+    .hero-copy {
+      max-width: 650px;
+      margin: 0;
+      color: oklch(0.93 0.018 88);
+      font-size: clamp(1.08rem, 2vw, 1.38rem);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
+    .proof-bar {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid oklch(0.95 0.02 90 / 0.22);
+      background: oklch(0.95 0.02 90 / 0.22);
+      max-width: 760px;
+    }
+    .proof-bar div {
+      padding: 14px;
+      background: oklch(0.20 0.04 58 / 0.52);
+    }
+    .proof-bar strong { display: block; color: var(--harvest); }
+    .proof-bar span { color: oklch(0.92 0.018 88); font-size: 0.93rem; }
+
+    .band { padding: clamp(54px, 8vw, 112px) clamp(18px, 5vw, 58px); }
+    .wrap { width: min(1180px, 100%); margin: 0 auto; }
     .section-head {
       display: grid;
-      gap: 18px;
-      align-items: end;
-      margin-bottom: 32px;
+      gap: 14px;
+      margin-bottom: clamp(24px, 5vw, 54px);
     }
+    .section-head p { max-width: 650px; margin: 0; color: var(--soil-2); font-size: 1.08rem; }
+    .section-kicker { color: var(--leaf-dark); font-weight: 800; margin: 0 0 8px; }
+    h2 { font-size: clamp(2.2rem, 6vw, 5.6rem); max-width: 900px; }
+    h3 { font-size: clamp(1.45rem, 3vw, 2.35rem); }
 
-    .section-head h2 {
-      margin: 0;
-      max-width: 760px;
-      font-size: 3.2rem;
-    }
-
-    .section-head p {
-      max-width: 560px;
-      margin: 0;
-      color: var(--ink-muted);
-      font-size: 1.08rem;
-    }
-
-    .ways-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .pilot-ledger,
-    .care-switchboard,
-    .ops-board {
+    .idea-strip {
       display: grid;
       gap: 1px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
       overflow: hidden;
-      background: var(--soil);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 10px);
+      background: var(--line);
+      box-shadow: var(--shadow);
     }
-
-    .ledger-row,
-    .care-choice,
-    .ops-cell {
+    .idea-cell {
+      min-height: 210px;
+      padding: clamp(22px, 4vw, 38px);
+      background: var(--paper-soft);
       display: grid;
-      gap: 10px;
-      padding: 20px;
-      background: var(--paper-pale);
+      align-content: space-between;
+      gap: 30px;
     }
+    .idea-cell b { color: var(--clay); font-size: 0.9rem; }
+    .idea-cell p { margin: 0; max-width: 34ch; color: var(--soil-2); }
+    .idea-cell.featured { background: var(--leaf-dark); color: var(--paper-soft); }
+    .idea-cell.featured p { color: oklch(0.91 0.03 115); }
+    .idea-cell.featured b { color: var(--harvest); }
 
-    .ledger-row {
-      grid-template-columns: minmax(110px, 0.38fr) minmax(0, 1fr);
-      align-items: start;
+    .route {
+      background: var(--field);
+      border-block: 1px solid oklch(0.68 0.08 126 / 0.35);
     }
-
-    .ledger-row strong,
-    .care-choice h3,
-    .ops-cell h3 {
-      margin: 0;
-      color: var(--leaf-dark);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.32rem;
-      line-height: 1.06;
-    }
-
-    .ledger-row p,
-    .care-choice p,
-    .ops-cell p {
-      margin: 0;
-      color: var(--soil-soft);
-    }
-
-    .ledger-row .label {
-      color: var(--clay);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-weight: 800;
-    }
-
-    .care-switchboard {
-      margin-bottom: 26px;
-    }
-
-    .care-choice {
-      position: relative;
-      min-height: 100%;
-    }
-
-    .care-choice.featured {
-      background: var(--sun);
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      padding: 6px 9px;
-      border: 1px solid oklch(0.34 0.055 58 / 0.48);
-      border-radius: 999px;
-      background: oklch(0.985 0.012 86 / 0.72);
-      color: var(--soil);
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    .package {
-      position: relative;
+    .route-line {
       display: grid;
       gap: 16px;
-      padding: 20px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--paper-pale);
-      box-shadow: 8px 8px 0 oklch(0.7 0.05 78);
     }
-
-    .package.featured {
-      background: var(--leaf-soft);
-      box-shadow: 10px 10px 0 var(--soil);
-    }
-
-    .package img {
-      width: 100%;
-      aspect-ratio: 5 / 3;
-      object-fit: cover;
-      border: 2px solid var(--soil);
-      border-radius: calc(var(--radius) - 2px);
-    }
-
-    .package h3 {
-      margin: 0;
-      font-size: 1.85rem;
-    }
-
-    .package p {
-      margin: 0;
-      color: var(--soil-soft);
-    }
-
-    .price {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-top: 4px;
-      color: var(--leaf-dark);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
-    }
-
-    .price span {
-      color: var(--soil-soft);
-      font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    .deal-note {
-      margin: -4px 0 0;
-      padding: 10px 12px;
-      border: 1px solid oklch(0.44 0.08 144 / 0.55);
-      border-radius: var(--radius);
-      background: oklch(0.92 0.07 136);
-      color: var(--leaf-dark);
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    .package ul,
-    .plain-list {
+    .route-step {
       display: grid;
-      gap: 9px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 20px 0;
+      border-top: 1px solid oklch(0.62 0.08 126 / 0.32);
     }
-
-    .package li,
-    .plain-list li {
-      position: relative;
-      padding-left: 24px;
-    }
-
-    .package li::before,
-    .plain-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 12px;
-      height: 2px;
-      background: var(--clay);
-    }
-
-    .field-band {
-      background: var(--paper-deep);
-      border-block: 2px solid var(--soil);
-    }
-
-    .research-grid,
-    .service-grid {
+    .route-step:first-child { border-top: 0; }
+    .route-step b {
+      width: 52px;
+      height: 52px;
       display: grid;
-      gap: 18px;
-    }
-
-    .research-card,
-    .service-card {
-      padding: 22px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--paper-pale);
-      box-shadow: 8px 8px 0 oklch(0.7 0.05 78);
-    }
-
-    .research-card strong,
-    .service-card h3 {
-      display: block;
-      margin: 0 0 10px;
-      color: var(--leaf-dark);
+      place-items: center;
+      border-radius: 50%;
+      background: var(--harvest);
+      color: var(--soil);
       font-family: "Bricolage Grotesque", system-ui, sans-serif;
       font-size: 1.35rem;
-      line-height: 1.05;
     }
+    .route-step p { margin: 7px 0 0; max-width: 54ch; color: var(--soil-2); }
 
-    .research-card p,
-    .service-card p {
-      margin: 0;
-      color: var(--soil-soft);
-    }
-
-    .ops-board {
-      margin-top: 26px;
-    }
-
-    .ops-cell:nth-child(2) {
-      background: oklch(0.93 0.055 205);
-    }
-
-    .ops-cell:nth-child(3) {
-      background: oklch(0.93 0.065 136);
-    }
-
-    .ops-cell:nth-child(4) {
-      background: oklch(0.95 0.055 82);
-    }
-
-    .pricing-matrix {
+    .offers {
       display: grid;
-      gap: 1px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
+      gap: clamp(18px, 3vw, 26px);
+    }
+    .offer {
+      display: grid;
       overflow: hidden;
-      background: var(--soil);
-    }
-
-    .pricing-row {
-      display: grid;
-      gap: 10px;
-      padding: 18px;
-      background: var(--paper-pale);
-    }
-
-    .pricing-row.header {
-      display: none;
-      background: var(--soil);
-      color: var(--paper-pale);
-      font-weight: 800;
-    }
-
-    .pricing-row strong {
-      color: var(--leaf-dark);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.25rem;
-      line-height: 1.05;
-    }
-
-    .pricing-row span {
-      color: var(--soil-soft);
-    }
-
-    .field-layout {
-      display: grid;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .ai-band {
-      background: var(--charcoal);
-      color: var(--paper-pale);
-    }
-
-    .ai-band .section-kicker {
-      color: var(--water);
-    }
-
-    .ai-band .section-head p,
-    .ai-panel p,
-    .ai-step span {
-      color: oklch(0.88 0.022 84);
-    }
-
-    .ai-layout {
-      display: grid;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .ai-panel {
-      padding: 24px;
-      border: 2px solid var(--paper-pale);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(135deg, oklch(0.78 0.07 205 / 0.2), transparent 40%),
-        oklch(0.32 0.04 72);
-      box-shadow: 10px 10px 0 oklch(0.78 0.07 205 / 0.5);
-    }
-
-    .ai-panel h3,
-    .ai-step strong {
-      margin: 0;
-      color: var(--water);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      line-height: 1.08;
-    }
-
-    .ai-panel h3 {
-      font-size: 2rem;
-    }
-
-    .ai-steps {
-      display: grid;
-      gap: 1px;
-      border: 2px solid oklch(0.965 0.018 83 / 0.75);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: oklch(0.965 0.018 83 / 0.75);
-    }
-
-    .ai-step {
-      display: grid;
-      grid-template-columns: 44px minmax(0, 1fr);
-      gap: 14px;
-      padding: 18px;
-      background: oklch(0.3 0.04 72);
-    }
-
-    .ai-step b {
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border: 2px solid var(--water);
-      border-radius: 50%;
-      color: var(--water);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-    }
-
-    .ai-step p {
-      margin: 4px 0 0;
-    }
-
-    .field-map {
-      position: relative;
-      min-height: 520px;
-      padding: 18px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(90deg, transparent 0 18px, oklch(0.7 0.045 82 / 0.52) 18px 20px, transparent 20px 100%) 0 0 / 78px 100%,
-        var(--paper-pale);
-      box-shadow: 12px 12px 0 oklch(0.58 0.105 42 / 0.55);
-    }
-
-    .map-plots {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      height: 100%;
-    }
-
-    .plot-row {
-      min-height: 138px;
-      border: 2px solid var(--soil);
-      border-radius: 7px;
-      background:
-        repeating-linear-gradient(90deg, var(--soil) 0 6px, transparent 6px 20px),
-        linear-gradient(var(--leaf-soft), oklch(0.76 0.08 132));
-      overflow: hidden;
-    }
-
-    .plot-row:nth-child(2n) {
-      transform: translateY(22px);
-      background:
-        repeating-linear-gradient(90deg, var(--soil) 0 6px, transparent 6px 20px),
-        linear-gradient(oklch(0.72 0.09 128), oklch(0.86 0.08 135));
-    }
-
-    .map-label {
-      position: absolute;
-      padding: 10px 12px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--harvest);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-weight: 800;
-      box-shadow: 4px 4px 0 var(--soil);
-    }
-
-    .map-label.camera {
-      right: 28px;
-      top: 28px;
-      background: var(--water);
-    }
-
-    .map-label.compost {
-      left: 26px;
-      bottom: 30px;
-      background: var(--paper-pale);
-    }
-
-    .map-label.caretaker {
-      right: 34px;
-      bottom: 90px;
-      background: var(--leaf-soft);
-    }
-
-    .how-steps {
-      display: grid;
-      gap: 1px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--soil);
-    }
-
-    .step {
-      display: grid;
-      gap: 8px;
-      padding: 22px;
-      background: var(--paper-pale);
-    }
-
-    .step strong {
-      color: var(--leaf-dark);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.28rem;
-      line-height: 1.05;
-    }
-
-    .split {
-      display: grid;
-      gap: 32px;
-      align-items: start;
-    }
-
-    .local-loop {
-      display: grid;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .loop-step {
-      display: grid;
-      grid-template-columns: 34px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-    }
-
-    .loop-step b {
-      display: grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-      border: 2px solid var(--soil);
-      border-radius: 50%;
-      background: var(--harvest);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-    }
-
-    .loop-step p {
-      margin: 0;
-      color: var(--soil-soft);
-    }
-
-    .impact-panel {
-      padding: 26px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: var(--paper-pale);
-      box-shadow: 8px 8px 0 oklch(0.7 0.05 78);
-    }
-
-    .impact-panel h3 {
-      margin: 0 0 16px;
-      font-size: 2rem;
-    }
-
-    .impact-photo {
-      overflow: hidden;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      box-shadow: 10px 10px 0 var(--leaf-dark);
-    }
-
-    .impact-photo img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .warning {
-      margin-top: 18px;
-      padding: 16px;
+      border-radius: calc(var(--radius) + 12px);
+      background: var(--paper-soft);
       border: 1px solid var(--line);
+      box-shadow: 0 18px 50px oklch(0.28 0.04 60 / 0.11);
+    }
+    .offer img { height: 240px; width: 100%; object-fit: cover; }
+    .offer-body { padding: clamp(22px, 4vw, 34px); display: grid; gap: 16px; }
+    .offer p { margin: 0; color: var(--soil-2); max-width: 48ch; }
+    .price { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.045em; color: var(--leaf-dark); }
+    .price span { font-size: 1rem; letter-spacing: 0; color: var(--soil-2); font-family: "Atkinson Hyperlegible", system-ui, sans-serif; }
+
+    .proof-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .proof-note {
+      padding: clamp(22px, 4vw, 34px);
       border-radius: var(--radius);
-      background: oklch(0.95 0.04 82);
-      color: var(--soil-soft);
-      font-size: 0.95rem;
-    }
-
-    .waitlist-band {
-      position: relative;
       background: var(--soil);
-      color: var(--paper-pale);
+      color: var(--paper-soft);
     }
+    .proof-note:nth-child(2) { background: var(--clay); }
+    .proof-note:nth-child(3) { background: var(--leaf-dark); }
+    .proof-note p { margin: 12px 0 0; color: oklch(0.92 0.02 84); }
 
-    .waitlist-band::before {
+    .photo-break {
+      min-height: 72svh;
+      display: grid;
+      align-items: end;
+      padding: clamp(28px, 6vw, 70px);
+      position: relative;
+      isolation: isolate;
+      color: var(--paper-soft);
+      overflow: hidden;
+    }
+    .photo-break img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .photo-break::after {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(90deg, oklch(0.5 0.09 142 / 0.2) 1px, transparent 1px) 0 0 / 34px 34px,
-        linear-gradient(0deg, oklch(0.58 0.105 42 / 0.26), transparent);
-      pointer-events: none;
+      z-index: -1;
+      background: linear-gradient(0deg, oklch(0.20 0.04 58 / 0.88), transparent 70%);
     }
+    .photo-break h2 { max-width: 760px; }
 
-    .waitlist-band .wrap {
-      position: relative;
-      z-index: 1;
+    .waitlist {
+      background: var(--soil);
+      color: var(--paper-soft);
     }
-
     .waitlist-grid {
       display: grid;
-      gap: 28px;
+      gap: clamp(26px, 5vw, 56px);
       align-items: start;
     }
-
-    .waitlist-copy h2 {
-      margin: 0 0 18px;
-      font-size: 3.4rem;
-    }
-
-    .waitlist-copy p {
-      max-width: 590px;
-      color: oklch(0.91 0.025 84);
-      font-size: 1.08rem;
-    }
+    .waitlist-copy p, .waitlist-copy li { color: oklch(0.91 0.018 88); }
+    .plain-list { padding-left: 1.1em; margin: 20px 0 0; }
+    .plain-list li + li { margin-top: 8px; }
 
     .form-panel {
-      padding: 22px;
-      border: 2px solid var(--paper-pale);
-      border-radius: var(--radius);
-      background: var(--paper-pale);
-      color: var(--soil);
-      box-shadow: 10px 10px 0 var(--harvest);
-    }
-
-    .form-grid {
       display: grid;
       gap: 14px;
+      padding: clamp(18px, 4vw, 30px);
+      border: 1px solid oklch(0.95 0.02 90 / 0.22);
+      border-radius: calc(var(--radius) + 10px);
+      background: oklch(0.97 0.018 84);
+      color: var(--soil);
+      box-shadow: var(--shadow);
     }
-
-    .field {
-      display: grid;
-      gap: 7px;
-    }
-
-    label {
-      font-weight: 700;
-    }
-
-    input,
-    select,
-    textarea {
+    .field { display: grid; gap: 7px; }
+    label { font-weight: 800; }
+    input, select, textarea {
       width: 100%;
-      min-height: 48px;
-      padding: 12px 13px;
-      border: 2px solid var(--soil);
-      border-radius: var(--radius);
-      background: oklch(0.99 0.01 83);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper-soft);
       color: var(--soil);
-    }
-
-    textarea {
-      min-height: 104px;
-      resize: vertical;
-    }
-
-    .check-field {
-      display: grid;
-      grid-template-columns: 24px 1fr;
-      gap: 10px;
-      align-items: start;
-      margin-top: 2px;
-      font-size: 0.95rem;
-    }
-
-    .check-field input {
-      min-height: auto;
-      width: 22px;
-      height: 22px;
-      margin: 2px 0 0;
-      accent-color: var(--leaf);
-    }
-
-    .error-text {
-      display: none;
-      color: var(--error);
-      font-size: 0.9rem;
-    }
-
-    .field.has-error input,
-    .field.has-error select,
-    .field.has-error textarea,
-    .check-field.has-error input {
-      border-color: var(--error);
-    }
-
-    .field.has-error .error-text,
-    .check-field.has-error + .error-text {
-      display: block;
-    }
-
-    .status {
-      min-height: 52px;
-      margin-top: 14px;
       padding: 13px 14px;
-      border-radius: var(--radius);
-      background: oklch(0.93 0.05 135);
-      color: var(--leaf-dark);
-      font-weight: 700;
-      display: none;
     }
-
-    .status.visible {
-      display: block;
+    textarea { min-height: 110px; resize: vertical; }
+    input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible {
+      outline: 3px solid oklch(0.84 0.15 88 / 0.72);
+      outline-offset: 3px;
     }
+    .check-field { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-weight: 400; }
+    .check-field input { width: 18px; height: 18px; margin-top: 4px; }
+    .error-text { display: none; color: var(--error); font-size: 0.9rem; }
+    .has-error .error-text, .check-field.has-error + .error-text { display: block; }
+    .form-note { margin: 0; color: var(--soil-2); font-size: 0.92rem; }
+    .status { display: none; margin: 0; padding: 12px 14px; border-radius: 14px; font-weight: 800; }
+    .status.visible { display: block; }
 
-    .faq-list {
-      display: grid;
-      gap: 14px;
-    }
-
+    .faq-grid { display: grid; gap: 10px; }
     details {
-      border-top: 2px solid var(--soil);
-      padding: 18px 0 4px;
+      border-top: 1px solid var(--line);
+      padding: 18px 0;
     }
-
-    details:last-child {
-      border-bottom: 2px solid var(--soil);
-      padding-bottom: 18px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-weight: 800;
-      font-size: 1.35rem;
-    }
-
-    details p {
-      max-width: 760px;
-      color: var(--ink-muted);
-    }
+    summary { cursor: pointer; font-weight: 800; font-size: 1.08rem; }
+    details p { max-width: 66ch; color: var(--soil-2); }
 
     .site-footer {
-      padding: 32px 16px;
-      background: var(--paper-deep);
-      border-top: 2px solid var(--soil);
-    }
-
-    .footer-grid {
       display: grid;
-      gap: 16px;
-      width: min(1180px, 100%);
-      margin: 0 auto;
-      color: var(--soil-soft);
-      font-size: 0.95rem;
+      gap: 8px;
+      padding: 26px clamp(18px, 5vw, 58px);
+      border-top: 1px solid var(--line);
+      color: var(--soil-2);
+      background: var(--paper-soft);
+    }
+    .site-footer strong { color: var(--soil); }
+
+    .reveal { opacity: 1; transform: none; }
+    .js .reveal { animation: fieldNoteIn 700ms var(--ease) both; }
+    @keyframes fieldNoteIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
     }
 
-    .footer-grid strong {
-      color: var(--soil);
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.2rem;
-    }
-
-    .reveal {
-      opacity: 1;
-      transform: none;
-    }
-
-    .js .reveal {
-      opacity: 1;
-      transform: none;
-      transition: opacity 650ms var(--ease), transform 650ms var(--ease);
-    }
-
-    .js .reveal.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (min-width: 720px) {
-      .site-header {
-        grid-template-columns: auto 1fr auto;
-        padding-inline: 28px;
-      }
-
-      .nav-links {
-        display: flex;
-        justify-content: center;
-      }
-
-      .site-header > .button {
-        display: inline-flex;
-      }
-
-      .section-head {
-        grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.62fr);
-      }
-
-      .hero-proof,
-      .care-switchboard,
-      .ops-board {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .care-switchboard {
-        grid-template-columns: 1fr 1.2fr;
-      }
-
-      .ways-grid {
-        grid-template-columns: 1.15fr 1fr 1fr;
-        align-items: stretch;
-      }
-
-      .research-grid,
-      .service-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .mission-board {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .proof-strip {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .pricing-row {
-        grid-template-columns: 1.1fr 0.8fr 0.8fr 1.1fr;
-        align-items: center;
-      }
-
-      .pricing-row.header {
-        display: grid;
-      }
-
-      .package.featured {
-        transform: translateY(-16px);
-      }
-
-      .field-layout,
-      .split,
-      .waitlist-grid,
-      .ai-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
-      }
-
-      .how-steps {
-        grid-template-columns: repeat(5, 1fr);
-      }
-    }
-
-    @media (min-width: 1040px) {
-      .brand-mark {
-        font-size: 1.2rem;
-      }
-
-      .band {
-        padding-block: 96px;
-      }
-    }
-
-    @media (max-width: 860px) {
-      h1 {
-        font-size: 3.1rem;
-      }
-
-      .section-head h2,
-      .waitlist-copy h2 {
-        font-size: 2.35rem;
-      }
-
-      .hero {
-        min-height: 78vh;
-      }
-
-      .hero-content {
-        padding-top: 54px;
-        padding-bottom: 112px;
-      }
-
-      .camera-tag {
-        right: 18px;
-        bottom: 32px;
-        width: min(310px, calc(100% - 36px));
-      }
+    @media (min-width: 760px) {
+      .site-header { grid-template-columns: auto 1fr auto; }
+      .nav-links { display: flex; justify-self: center; }
+      .proof-bar { grid-template-columns: repeat(4, 1fr); }
+      .idea-strip { grid-template-columns: 0.8fr 1.25fr 0.95fr; }
+      .section-head { grid-template-columns: 1fr 0.72fr; align-items: end; }
+      .offers { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+      .offer.featured { grid-column: span 2; grid-template-columns: 0.9fr 1fr; }
+      .offer.featured img { height: 100%; min-height: 420px; }
+      .proof-grid { grid-template-columns: repeat(3, 1fr); }
+      .waitlist-grid { grid-template-columns: 0.9fr 1.1fr; }
+      .route-line { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid oklch(0.62 0.08 126 / 0.32); }
+      .route-step { grid-template-columns: 1fr; padding-right: 28px; border-top: 0; }
     }
 
     @media (max-width: 520px) {
-      .site-header > .button {
-        display: none;
-      }
-
-      .hero-actions {
-        align-items: stretch;
-      }
-
-      .hero-actions .button {
-        width: 100%;
-      }
-
-      .hero-proof {
-        margin-top: 24px;
-      }
-
-      .ledger-row {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 2.45rem;
-      }
-
-      .hero-copy {
-        font-size: 1rem;
-      }
-
-      .field-map {
-        min-height: 430px;
-      }
-
-      .map-plots {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .map-label {
-        font-size: 0.88rem;
-      }
+      .site-header .button { display: none; }
+      .proof-bar { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(3rem, 16vw, 4.3rem); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-
-      .js .reveal {
-        opacity: 1;
-        transform: none;
-      }
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -1377,17 +435,13 @@
       <span>Grow<br>Chiang Mai</span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#pilot">Better idea</a>
-      <a href="#execution">Execution</a>
-      <a href="#missions">Missions</a>
-      <a href="#memberships">Offers</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#farm">Farm plan</a>
-      <a href="#ai">Later upgrades</a>
-      <a href="#cafe">Visit comfort</a>
-      <a href="#faq">FAQ</a>
+      <a href="#idea">Idea</a>
+      <a href="#route">Route</a>
+      <a href="#offers">Offers</a>
+      <a href="#proof">Proof</a>
+      <a href="#waitlist">Join</a>
     </nav>
-    <a class="button secondary" href="#waitlist">Join farm-day list</a>
+    <a class="button secondary" href="#waitlist">Join list</a>
   </header>
 
   <main id="main">
@@ -1396,591 +450,187 @@
         <source media="(min-width: 900px)" srcset="https://images.unsplash.com/photo-1773994788915-7fb0f462f223?auto=format&fit=crop&w=2200&q=78">
         <img src="https://images.unsplash.com/photo-1773994788915-7fb0f462f223?auto=format&fit=crop&w=1200&q=76" alt="Rows of vegetables growing in a garden with hills beyond">
       </picture>
-      <div class="hero-content">
-        <p class="eyebrow">Better Chiang Mai-first farm business</p>
-        <h1 id="hero-title">Sell beautiful farm days first. Turn the best visitors into harvest members.</h1>
-        <p class="hero-copy">The stronger version is not “rent a plot online.” It is a Chiang Mai farm-day club for families, expats, retreats, and slow-travel visitors — with an optional Harvest Bed Club only after people have paid, visited, and asked to stay connected.</p>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Chiang Mai farm days first</p>
+        <h1 id="hero-title">Come for one beautiful farm day.</h1>
+        <p class="hero-copy">Plant, taste, take photos, meet the caretaker. If people love it, we open a small Harvest Bed Club later.</p>
         <div class="hero-actions">
-          <a class="button" href="#waitlist">Join the farm-day list — no payment today</a>
-          <a class="button secondary hero-secondary" href="#memberships">See the better offers</a>
-          <p class="hero-note">Execution rule: sell tickets and group days before monthly beds, cameras, AI, or cafe buildout.</p>
+          <a class="button" href="#waitlist">Join the first date list</a>
+          <a class="button secondary" href="#offers">See offers</a>
         </div>
-        <div class="hero-proof" aria-label="Launch proof points">
-          <div class="proof-item">
-            <strong>First 3 farm days</strong>
-            <span>Fastest proof: do people pay and show up?</span>
-          </div>
-          <div class="proof-item">
-            <strong>No payment today</strong>
-            <span>We confirm land, schedule, and care first.</span>
-          </div>
-          <div class="proof-item">
-            <strong>Groups pay better</strong>
-            <span>Families, retreats, schools, and teams can buy a full visit.</span>
-          </div>
-          <div class="proof-item">
-            <strong>Harvest club later</strong>
-            <span>Weekly bed updates come after visitors prove they care.</span>
-          </div>
+        <div class="proof-bar" aria-label="Business proof points">
+          <div><strong>790 to 990 THB</strong><span>Public farm day</span></div>
+          <div><strong>3 dates</strong><span>First proof</span></div>
+          <div><strong>Group days</strong><span>Better cash flow</span></div>
+          <div><strong>10 beds later</strong><span>Only after demand</span></div>
         </div>
       </div>
-      <aside class="camera-tag" aria-label="Offer note">
-        <strong>Farm Day → Harvest Club</strong>
-        <span>Start with memorable paid visits. Offer a cared-for harvest bed only to people who already visited, paid, and want weekly crop updates.</span>
-      </aside>
     </section>
 
-    <section class="band pilot-band" id="pilot" aria-labelledby="pilot-title">
+    <section class="band" id="idea" aria-labelledby="idea-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <p class="section-kicker">Better idea</p>
-            <h2 id="pilot-title">Make the farm a paid Chiang Mai experience first, not a monthly subscription first.</h2>
+            <p class="section-kicker">The cleaner idea</p>
+            <h2 id="idea-title">Less pitch. More visit.</h2>
           </div>
-          <p>In Chiang Mai, the easier money is in beautiful day experiences and group visits. Monthly harvest beds can still exist — but they should be the follow-up product, not the first thing to prove.</p>
+          <p>Chiang Mai already sells memorable days: cooking, crafts, nature, retreats. Grow Chiang Mai should join that behavior first.</p>
         </div>
-        <div class="pilot-ledger reveal" aria-label="Pilot launch decisions">
-          <div class="ledger-row">
-            <span class="label">Core offer</span>
-            <p><strong>Sell Chiang Mai Farm Day Passes first.</strong> A paid 2–3 hour visit is easier to understand, easier to gift, and easier to buy than a monthly vegetable-bed subscription.</p>
+        <div class="idea-strip reveal" aria-label="Simple business logic">
+          <div class="idea-cell">
+            <b>Do first</b>
+            <h3>Sell a farm day</h3>
+            <p>Easy to understand. Easy to gift. Easy to test.</p>
           </div>
-          <div class="ledger-row">
-            <span class="label">Phase 1</span>
-            <p><strong>Run 3 paid farm days and one private group day.</strong> Use shade, water, hand-wash, borrowed/locked tools, photo spots, seedlings, and simple refreshments. Partner with a nearby cafe instead of building one.</p>
+          <div class="idea-cell featured">
+            <b>Best buyer</b>
+            <h3>Families, expats, retreats</h3>
+            <p>They want a warm local activity, not a complicated farm subscription.</p>
           </div>
-          <div class="ledger-row">
-            <span class="label">Follow-up</span>
-            <p><strong>Convert only the best visitors into Harvest Bed Club members.</strong> Members pay for a cared-for bed, weekly updates, visit days, and harvest options — not land ownership or guaranteed harvest.</p>
-          </div>
-          <div class="ledger-row">
-            <span class="label">Proof</span>
-            <p><strong>Measure paid behavior, not compliments.</strong> Track ticket sales, no-shows, group inquiries, deposit conversion, weekly-update engagement, caretaker hours, and repeat bookings.</p>
+          <div class="idea-cell">
+            <b>Do later</b>
+            <h3>Open harvest beds</h3>
+            <p>Only for visitors who already paid, came, and asked for more.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="band field-band" id="execution" aria-labelledby="execution-title">
+    <section class="band route" id="route" aria-labelledby="route-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <p class="section-kicker">Execution ladder</p>
-            <h2 id="execution-title">The better path: ticket revenue first, membership second.</h2>
+            <p class="section-kicker">Guest route</p>
+            <h2 id="route-title">One visit, four moments.</h2>
           </div>
-          <p>The viable first business is “host memorable paid farm days near Chiang Mai, then invite repeat visitors into a small harvest membership.”</p>
+          <p>Keep the first experience short, photogenic, and repeatable.</p>
         </div>
-        <div class="mission-board reveal" aria-label="Execution phases">
-          <article class="mission-card priority">
-            <div class="mission-meta"><span class="mission-tag">Phase 0</span><span class="mission-tag">1–2 weeks</span></div>
-            <h3>Find one photogenic partner site</h3>
-            <p>Use a simple farm/garden with water, shade, toilet access, parking path, and permission for small groups. Beauty and access matter more than perfect infrastructure.</p>
-            <ul><li>Take real photos.</li><li>Confirm toilets, shade, water, safety.</li><li>Create 3 photo/activity stations.</li></ul>
-          </article>
-          <article class="mission-card">
-            <div class="mission-meta"><span class="mission-tag">Phase 1</span><span class="mission-tag">3 public days</span></div>
-            <h3>Sell farm-day tickets</h3>
-            <p>Run small paid visits with planting, Thai herb tasting, caretaker story, photos, and a simple harvest/seedling takeaway.</p>
-            <ul><li>THB 790–990 ticket.</li><li>Cap 10–14 people.</li><li>Offer family bundle pricing.</li></ul>
-          </article>
-          <article class="mission-card">
-            <div class="mission-meta"><span class="mission-tag">Phase 2</span><span class="mission-tag">Groups</span></div>
-            <h3>Sell private group days</h3>
-            <p>Package the same farm day for retreats, homeschools, Thai families, tour partners, and small company teams.</p>
-            <ul><li>THB 7,900–12,000 group day.</li><li>One host script.</li><li>Partner cafe/transport optional.</li></ul>
-          </article>
-          <article class="mission-card">
-            <div class="mission-meta"><span class="mission-tag">Phase 3</span><span class="mission-tag">Harvest members</span></div>
-            <h3>Open 10 harvest beds</h3>
-            <p>Only invite proven visitors into monthly cared-for beds with weekly photo notes, scheduled harvest days, and no live-camera promise.</p>
-            <ul><li>Convert from attendees.</li><li>Keep first cohort small.</li><li>Expand only after renewals.</li></ul>
-          </article>
+        <div class="route-line reveal" aria-label="Farm day route">
+          <div class="route-step"><b>1</b><div><h3>Arrive</h3><p>Shade, water, toilet access, clear welcome.</p></div></div>
+          <div class="route-step"><b>2</b><div><h3>Plant</h3><p>Herbs or seedlings, guided by the caretaker.</p></div></div>
+          <div class="route-step"><b>3</b><div><h3>Taste</h3><p>Thai herb story, small snack or partner drink.</p></div></div>
+          <div class="route-step"><b>4</b><div><h3>Return</h3><p>Review, bring a group, or join a bed later.</p></div></div>
         </div>
       </div>
     </section>
 
-    <section class="band" id="missions" aria-labelledby="missions-title">
+    <section class="band" id="offers" aria-labelledby="offers-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <p class="section-kicker">Kanban missions</p>
-            <h2 id="missions-title">Four missions turn the farm into a sellable Chiang Mai experience.</h2>
+            <p class="section-kicker">Simple offers</p>
+            <h2 id="offers-title">Three things to sell. Nothing more.</h2>
           </div>
-          <p>This board keeps the project realistic: sell visits, learn the audience, capture group demand, then launch harvest beds only for people who already trust the farm.</p>
+          <p>Tickets first. Groups next. Monthly beds only after trust.</p>
         </div>
-        <div class="mission-board reveal" aria-label="Launch mission board">
-          <article class="mission-card priority">
-            <div class="mission-meta"><span class="mission-tag">Mission 1</span><span class="mission-tag">Doing now</span></div>
-            <h3>Farm-day proof</h3>
-            <p>Sell 3 public farm days before any monthly membership promise.</p>
-            <ul>
-              <li>Track ticket purchases, no-shows, and reviews.</li>
-              <li>Test family, expat, and slow-travel messaging.</li>
-              <li>Measure whether visitors ask for harvest beds after attending.</li>
-            </ul>
-          </article>
-          <article class="mission-card">
-            <div class="mission-meta"><span class="mission-tag">Mission 2</span><span class="mission-tag">Groups</span></div>
-            <h3>Private group package</h3>
-            <p>Package a half-day farm experience for retreats, homeschool groups, families, and small teams.</p>
-            <ul>
-              <li>Define one repeatable 2–3 hour program.</li>
-              <li>Create Thai/English host script and checklist.</li>
-              <li>Offer group pricing before building a cafe.</li>
-            </ul>
-          </article>
-          <article class="mission-card">
-            <div class="mission-meta"><span class="mission-tag">Mission 3</span><span class="mission-tag">Trust</span></div>
-            <h3>Harvest Bed Club</h3>
-            <p>Invite only the warmest visitors into 10 cared-for beds after they have paid, visited, and asked to stay connected.</p>
-            <ul>
-              <li>Weekly photo and field-note rules.</li>
-              <li>Simple crop calendar and realistic harvest expectations.</li>
-              <li>Keep organic claims careful and non-certified.</li>
-            </ul>
-          </article>
-          <article class="mission-card">
-            <div class="mission-meta"><span class="mission-tag">Mission 4</span><span class="mission-tag">Lead ops</span></div>
-            <h3>Lead + booking ops</h3>
-            <p>Move from browser-only saving to real lead capture, date selection, owner notification, and later deposit/payment workflow.</p>
-            <ul>
-              <li>Airtable, Google Sheets, Supabase, or Vercel API.</li>
-              <li>Segment leads by farm day, private group, harvest bed, and language.</li>
-              <li>Turn serious inquiries into scheduled calls or tickets.</li>
-            </ul>
-          </article>
-        </div>
-        <div class="proof-strip reveal" aria-label="Pilot acceptance metrics">
-          <div><strong>Launch gate</strong><span>3 paid farm days + 1 private group booking.</span></div>
-          <div><strong>Member proof</strong><span>Ticket sales, reviews, group inquiries, harvest-bed requests, and caretaker hours tracked.</span></div>
-          <div><strong>Expansion rule</strong><span>Add harvest beds, cafe comfort, cameras, and AI only after paid behavior supports them.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band tight" id="memberships" aria-labelledby="memberships-title">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="section-kicker">Better first offers</p>
-            <h2 id="memberships-title">Start with experiences people already understand and buy.</h2>
-          </div>
-          <p>Chiang Mai sells experiences well. Lead with farm days and private group visits; use the Harvest Bed Club as the premium follow-up for people who want a longer relationship.</p>
-        </div>
-        <div class="care-switchboard reveal" aria-label="Care model comparison">
-          <article class="care-choice">
-            <h3>Farm Day Pass</h3>
-            <p>Best first product. People pay once, visit the farm, plant something small, taste local herbs, take photos, meet the caretaker, and leave with a clear memory.</p>
-            <div class="tag-list">
-              <span class="tag">Easy to buy</span>
-              <span class="tag">Great for photos</span>
-              <span class="tag">Fast validation</span>
-            </div>
-          </article>
-          <article class="care-choice featured">
-            <h3>Private Group Farm Day</h3>
-            <p>Best revenue leverage. One booking can serve families, retreats, homeschool groups, tour partners, or company teams without promising monthly crop care.</p>
-            <div class="tag-list">
-              <span class="tag">Higher ticket</span>
-              <span class="tag">Partner friendly</span>
-              <span class="tag">Repeatable SOP</span>
-            </div>
-          </article>
-        </div>
-        <div class="ways-grid">
-          <article class="package featured reveal" style="--i: 0">
-            <img src="https://images.unsplash.com/photo-1774264036185-d86cce86dcd1?auto=format&fit=crop&w=900&q=76" alt="Rows of lettuce with drip irrigation lines">
-            <div>
+        <div class="offers">
+          <article class="offer featured reveal">
+            <img src="https://images.unsplash.com/photo-1774264036185-d86cce86dcd1?auto=format&fit=crop&w=1100&q=76" alt="Rows of lettuce with drip irrigation lines">
+            <div class="offer-body">
               <p class="section-kicker">Best first offer</p>
               <h3>Farm Day Pass</h3>
-              <p>A 2–3 hour Chiang Mai farm experience: plant herbs or seedlings, learn the crop story, taste something local, take photos, and see whether the farm feels worth joining again.</p>
+              <p>2 to 3 hours of planting, tasting, photos, and local farm story.</p>
+              <div class="price">THB 790 to 990 <span>/ visit</span></div>
             </div>
-            <div class="price">THB 790–990 <span>/ visit</span></div>
-            <p class="deal-note">Public dates first. Families can book bundles after the first schedule is proven.</p>
-            <ul>
-              <li>Guided farm walk, planting activity, and photo spots</li>
-              <li>Seedling or small harvest takeaway when available</li>
-              <li>Thai/English friendly host script</li>
-              <li>Simple drinks/snacks through partner or temporary setup</li>
-              <li>Credit part of ticket toward Harvest Bed Club if launched</li>
-            </ul>
           </article>
-
-          <article class="package reveal" style="--i: 1">
+          <article class="offer reveal">
             <img src="https://images.unsplash.com/photo-1777499699424-e26d608008f4?auto=format&fit=crop&w=900&q=76" alt="Green onions growing in a small garden bed">
-            <div>
-              <p class="section-kicker">Higher-ticket</p>
-              <h3>Private Group Farm Day</h3>
-              <p>A bookable half-day for retreats, homeschool groups, Thai families, company teams, or tour partners who want a warm local nature activity without operating their own farm.</p>
+            <div class="offer-body">
+              <p class="section-kicker">Cash flow</p>
+              <h3>Private Group Day</h3>
+              <p>For retreats, schools, families, teams, and tour partners.</p>
+              <div class="price">THB 7,900+ <span>/ group</span></div>
             </div>
-            <div class="price">THB 7,900–12,000 <span>/ group</span></div>
-            <p class="deal-note">Target 8–16 guests. Custom food/transport can be partner add-ons, not fixed costs.</p>
-            <ul>
-              <li>Private time slot and host/caretaker</li>
-              <li>Planting, tasting, photo, and field-note activity</li>
-              <li>Thai/English facilitation option</li>
-              <li>Partner cafe, driver, or retreat add-ons when available</li>
-              <li>Best product for cash flow before monthly beds</li>
-            </ul>
           </article>
-
-          <article class="package reveal" style="--i: 2">
+          <article class="offer reveal">
             <img src="https://images.unsplash.com/photo-1773994788915-7fb0f462f223?auto=format&fit=crop&w=900&q=76" alt="Lush vegetable garden with rows of plants">
-            <div>
-              <p class="section-kicker">Recurring follow-up</p>
+            <div class="offer-body">
+              <p class="section-kicker">Later</p>
               <h3>Harvest Bed Club</h3>
-              <p>A small cared-for bed for people who already visited and want weekly updates, scheduled harvest days, and a stronger connection to the farm.</p>
+              <p>Weekly crop photos and harvest days for warm repeat visitors.</p>
+              <div class="price">10 beds <span>/ first cohort</span></div>
             </div>
-            <div class="price">THB 2,400–3,600 <span>/ month</span></div>
-            <p class="deal-note">Launch only after farm days create enough warm demand for 10 beds.</p>
-            <ul>
-              <li>3–8 sqm cared-for harvest bed</li>
-              <li>Weekly crop photo and short field note</li>
-              <li>Scheduled member visit/harvest days</li>
-              <li>Realistic seasonal expectations, no guaranteed harvest claim</li>
-            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="band" id="pricing" aria-labelledby="pricing-title">
+    <section class="photo-break" aria-labelledby="photo-title">
+      <img src="https://images.unsplash.com/photo-1774264036185-d86cce86dcd1?auto=format&fit=crop&w=1800&q=74" alt="Green lettuce beds in a sunny field">
+      <div class="wrap reveal">
+        <p class="eyebrow">What waits</p>
+        <h2 id="photo-title">No cafe, cameras, or AI until tickets sell.</h2>
+      </div>
+    </section>
+
+    <section class="band" id="proof" aria-labelledby="proof-title">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <p class="section-kicker">Launch pricing logic</p>
-            <h2 id="pricing-title">Price the experience first; use beds as the premium continuation.</h2>
+            <p class="section-kicker">Success gates</p>
+            <h2 id="proof-title">Only build after proof.</h2>
           </div>
-          <p>Tickets and group days are easier to sell in Chiang Mai than a cold monthly bed subscription. The Harvest Bed Club becomes a continuation for people who already experienced the farm.</p>
+          <p>The page should make the business feel lighter, safer, and easier to start.</p>
         </div>
-        <div class="research-grid">
-          <div class="research-card reveal">
-            <strong>Experience benchmark</strong>
-            <p>Chiang Mai visitors already pay for cooking classes, nature trips, workshops, and family activities. A farm day fits this buying behavior better than a plot subscription first.</p>
-          </div>
-          <div class="research-card reveal">
-            <strong>Group revenue logic</strong>
-            <p>One private group booking can equal many individual tickets, and it creates partnership channels with retreats, schools, drivers, hotels, and family communities.</p>
-          </div>
-          <div class="research-card reveal">
-            <strong>Membership reality</strong>
-            <p>Harvest beds are emotionally strong but operationally heavy. They should be offered after visitors prove trust, not before the farm knows its audience.</p>
-          </div>
-        </div>
-        <div class="pricing-matrix reveal" aria-label="Recommended launch pricing">
-          <div class="pricing-row header">
-            <span>Offer</span>
-            <span>Price</span>
-            <span>Launch gate</span>
-            <span>Best use</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Farm Day Pass</strong>
-            <span>THB 790–990</span>
-            <span>Sell 3 public dates</span>
-            <span>Validates whether families, expats, and visitors will pay and show up.</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Private Group Farm Day</strong>
-            <span>THB 7,900–12,000</span>
-            <span>Book 1 paid group</span>
-            <span>Retreats, homeschools, Thai families, small teams, and tour partners.</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Harvest Bed Club</strong>
-            <span>THB 2,400–3,600/mo</span>
-            <span>After 10 warm leads</span>
-            <span>Repeat visitors who want weekly updates, visit days, and harvest connection.</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Kids/family mini-workshop</strong>
-            <span>THB 350–500 add-on</span>
-            <span>After 2 smooth days</span>
-            <span>Seedling pot, herb tasting, nature notebook, or Thai-English plant lesson.</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Live camera / AI grow</strong>
-            <span>Postpone</span>
-            <span>After renewals</span>
-            <span>Use manual updates first; hardware comes only after members pay for the update habit.</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Partner add-ons</strong>
-            <span>Variable</span>
-            <span>After demand</span>
-            <span>Nearby cafe, driver, photographer, translator, retreat bundle, or chef partner.</span>
-          </div>
-          <div class="pricing-row">
-            <strong>Tool kit use</strong>
-            <span>Included in hosted visits</span>
-            <span>Supervised only</span>
-            <span>Keep tools controlled until the operating rhythm and safety rules are stable.</span>
-          </div>
-        </div>
-        <div class="ops-board reveal" aria-label="What to prove before expanding">
-          <div class="ops-cell">
-            <h3>Before cafe buildout</h3>
-            <p>Complete 6 paid farm days or 3 group bookings with repeat demand. Shade, toilets, water, and partner refreshments come before a full restaurant.</p>
-          </div>
-          <div class="ops-cell">
-            <h3>Before Harvest Bed Club</h3>
-            <p>Collect at least 10 warm requests from paid visitors and confirm the caretaker can deliver weekly photo notes without stress.</p>
-          </div>
-          <div class="ops-cell">
-            <h3>Before organic claims</h3>
-            <p>Use organic-method language, keep compost/input records, and avoid certified organic claims until paperwork and audits are real.</p>
-          </div>
-          <div class="ops-cell">
-            <h3>Before expansion</h3>
-            <p>Know host hours per visit, guest acquisition source, group conversion rate, caretaker load, crop failure rate, and review score.</p>
-          </div>
+        <div class="proof-grid reveal">
+          <div class="proof-note"><h3>3 paid farm days</h3><p>If people pay and show up, the first offer works.</p></div>
+          <div class="proof-note"><h3>1 group booking</h3><p>If a group buys, the business has stronger cash flow.</p></div>
+          <div class="proof-note"><h3>10 warm bed requests</h3><p>Then open the Harvest Bed Club, not before.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="band field-band" id="farm" aria-labelledby="farm-title">
-      <div class="wrap field-layout">
-        <div class="reveal">
-          <p class="section-kicker">Pilot farm shape</p>
-          <h2 id="farm-title">A photogenic partner farm with a repeatable guest route.</h2>
-          <p>Grow Chiang Mai operates as a Thai-run farm experience and harvest service. Guests buy a hosted visit, learning, photos, local connection, and optional harvest-bed follow-up. They do not buy land, own land, or receive a careless land promise.</p>
-          <ul class="plain-list" aria-label="Farm infrastructure">
-            <li>Start with a guest route: arrival, shade, planting station, herb/tasting station, photo spot, hand-wash, and checkout.</li>
-            <li>Keep banana, herb, or cover-crop areas so the site feels like a real working farm, not a staged set.</li>
-            <li>Prepare only 10 harvest beds after paid visitors ask for a longer relationship.</li>
-            <li>Use weekly photos and field notes before any live-camera hardware.</li>
-            <li>Founding area can be Mae Rim, San Sai, Doi Saket, Hang Dong, Mae Taeng, or near Kakanok if access, water, title, and permissions are clean.</li>
-          </ul>
-          <p class="warning">Trust note: real site photos matter. Paid promises should focus on the hosted experience, safe access, care, learning, and honest harvest expectations — not land ownership or guaranteed crops.</p>
-        </div>
-        <div class="field-map reveal" aria-label="Schematic farm map">
-          <div class="map-plots" aria-hidden="true">
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-            <div class="plot-row"></div>
-          </div>
-          <div class="map-label camera">photo station</div>
-          <div class="map-label compost">compost</div>
-          <div class="map-label caretaker">caretaker path</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band ai-band" id="ai" aria-labelledby="ai-title">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="section-kicker">Later upgrades</p>
-            <h2 id="ai-title">Postpone AI, cameras, and cafe until the experience sells.</h2>
-          </div>
-          <p>The first version should prove tickets, group bookings, reviews, and simple weekly updates manually. Only add sensors, live cameras, or AI irrigation after harvest members renew and pay for the update habit.</p>
-        </div>
-        <div class="ai-layout">
-          <div class="ai-panel reveal">
-            <h3>What stays manual in phase 1</h3>
-            <p>Keep the first service simple and inspectable. A host runs the visit, a caretaker keeps the site safe and alive, and the operator records what guests ask to buy next.</p>
-            <ul class="plain-list">
-              <li>Guest arrival checklist, safety note, and photo route.</li>
-              <li>Manual booking follow-up and review collection.</li>
-              <li>Short field note only for harvest members.</li>
-              <li>Simple post-visit question: would you book again, bring a group, or join a bed?</li>
-              <li>Upgrade wishlist tracked before any hardware spend.</li>
-            </ul>
-            <p class="warning">Do not sell AI, cafe comfort, or live video as launch promises. Sell a warm paid farm experience first.</p>
-          </div>
-          <div class="ai-steps reveal" aria-label="AI grow workflow">
-            <div class="ai-step">
-              <b>1</b>
-              <div><strong>Visit</strong><p>People attend a paid farm day and experience the site.</p></div>
-            </div>
-            <div class="ai-step">
-              <b>2</b>
-              <div><strong>Group</strong><p>Retreats, families, schools, and teams book private versions.</p></div>
-            </div>
-            <div class="ai-step">
-              <b>3</b>
-              <div><strong>Join</strong><p>Only warm repeat visitors are invited into Harvest Bed Club.</p></div>
-            </div>
-            <div class="ai-step">
-              <b>4</b>
-              <div><strong>Renew</strong><p>Only after repeat bookings or renewals do we test camera, cafe, or AI.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band" id="cafe" aria-labelledby="cafe-title">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="section-kicker">Visit comfort</p>
-            <h2 id="cafe-title">Solve the guest comfort problem without building a cafe first.</h2>
-          </div>
-          <p>The first farm day only needs shade, clean toilet access, hand-wash, cold drinks, safe tools, and clear parking. A full cafe comes later if guests repeatedly ask for it and spend enough on visits.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card reveal">
-            <h3>Partner refreshments</h3>
-            <p>Start with drinking water, iced tea, fruit, simple snacks, or a nearby cafe partner. Keep food/AC costs variable until bookings are repeatable.</p>
-          </article>
-          <article class="service-card reveal">
-            <h3>Guest arrival path</h3>
-            <p>Mark a small parking area, check-in point, hand-wash station, shaded route, and safe photo spots so visits feel practical for families and retirees.</p>
-          </article>
-          <article class="service-card reveal">
-            <h3>Supervised tool kit</h3>
-            <p>Offer clean basic tools only during hosted visits. Keep powered equipment supervised by caretakers for safety and avoid rental complexity early.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="band" aria-labelledby="how-title">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div>
-            <p class="section-kicker">From interest to repeat buyer</p>
-            <h2 id="how-title">Simple enough to book, honest enough to trust.</h2>
-          </div>
-          <p>You can join the list without paying today. A short follow-up helps us test the first dates, language needs, group demand, and whether a Harvest Bed Club is worth opening.</p>
-        </div>
-        <div class="how-steps reveal">
-          <div class="step"><strong>1. Join interest list</strong><span>Tell us whether you want a public farm day, private group day, or harvest membership later.</span></div>
-          <div class="step"><strong>2. Choose a date</strong><span>We confirm the first farm-day schedule, language, transport needs, and guest count.</span></div>
-          <div class="step"><strong>3. Visit the farm</strong><span>Plant, taste, learn, take photos, meet the caretaker, and understand the real site.</span></div>
-          <div class="step"><strong>4. Review or book group</strong><span>If the day is good, guests can review, bring a group, or request a private date.</span></div>
-          <div class="step"><strong>5. Join Harvest Bed Club</strong><span>Only warm visitors can reserve one of the first 10 cared-for harvest beds.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band field-band" id="impact" aria-labelledby="impact-title">
-      <div class="wrap split">
-        <div class="impact-photo reveal">
-          <img src="https://images.unsplash.com/photo-1774264036185-d86cce86dcd1?auto=format&fit=crop&w=1100&q=74" alt="Lettuce field with drip irrigation lines under open sky">
-        </div>
-        <div class="impact-panel reveal">
-          <p class="section-kicker">Local loop</p>
-          <h2 id="impact-title">The local story becomes stronger when guests can see it.</h2>
-          <p>Good intent is not enough. Farm days let people meet the land, the caretaker, the compost loop, and the real local work before they join anything monthly.</p>
-          <ul class="plain-list">
-            <li>Paid work for village caretakers, hosts, workshop guides, and farm support.</li>
-            <li>Natural inputs sourced from local compost, rice husk, banana waste, leaf mold, or traceable minority and hilltribe suppliers when available.</li>
-            <li>Optional sponsor activities for schools, temples, or community food projects after the paid model works.</li>
-            <li>Clear field notes and photo rules so guests see crops without exposing people.</li>
-          </ul>
-          <div class="local-loop" aria-label="Local compost loop">
-            <div class="loop-step">
-              <b>1</b>
-              <p><strong>Collect clean local waste.</strong> Banana stems, leaves, cafe grounds, rice husk, and vegetable trimmings can become compost when sorted properly.</p>
-            </div>
-            <div class="loop-step">
-              <b>2</b>
-              <p><strong>Pay for useful inputs.</strong> Buy compost or fertilizer from local producers when quality is clear. This makes the support local message real.</p>
-            </div>
-            <div class="loop-step">
-              <b>3</b>
-              <p><strong>Reduce burn pressure carefully.</strong> Do not claim the farm stops burning season. Say it creates a small paid alternative for clean organic material.</p>
-            </div>
-            <div class="loop-step">
-              <b>4</b>
-              <p><strong>Show guest evidence.</strong> Visit notes can list compost batches, input sources, and crop beds that used them.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band waitlist-band" id="waitlist" aria-labelledby="waitlist-title">
+    <section class="band waitlist" id="waitlist" aria-labelledby="waitlist-title">
       <div class="wrap waitlist-grid">
         <div class="waitlist-copy reveal">
-          <p class="section-kicker">Farm-day interest list</p>
-          <h2 id="waitlist-title">Join the farm-day list — no payment today.</h2>
-          <p>Tell us whether you want a public farm day, private group visit, or future Harvest Bed Club. We will use this to choose the first dates, language, site setup, and booking flow.</p>
+          <p class="section-kicker">First date list</p>
+          <h2 id="waitlist-title">Want the first farm day?</h2>
+          <p>No payment today. We use this list to choose dates, language, group demand, and the first site setup.</p>
           <ul class="plain-list">
-            <li>No payment is taken when you join the interest list.</li>
-            <li>We follow up personally before confirming any farm-day date, group booking, or harvest bed.</li>
-            <li>Early guests help shape visit dates, crop activities, language needs, photo updates, and whether harvest beds/cafe/cameras are worth adding later.</li>
+            <li>Public farm day</li>
+            <li>Private group visit</li>
+            <li>Harvest Bed Club later</li>
           </ul>
         </div>
         <form class="form-panel reveal" id="waitlistForm" novalidate>
-          <div class="form-grid">
-            <div class="field" data-field="name">
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" required>
-              <span class="error-text" id="name-error">Please enter your name.</span>
-            </div>
-            <div class="field" data-field="email">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
-              <span class="error-text" id="email-error">Email needs an @ symbol. Example: hello@example.com</span>
-            </div>
-            <div class="field">
-              <label for="contact">WhatsApp or Line</label>
-              <input id="contact" name="contact" autocomplete="tel" placeholder="+66 or Line ID">
-            </div>
-            <div class="field" data-field="package">
-              <label for="package">Offer interest</label>
-              <select id="package" name="package" required>
-                <option value="">Choose one</option>
-                <option>Farm Day Pass</option>
-                <option>Private Group Farm Day</option>
-                <option>Harvest Bed Club later</option>
-                <option>Kids / family mini-workshop</option>
-                <option>Retreat or school partnership</option>
-                <option>Not sure yet</option>
-              </select>
-              <span class="error-text" id="package-error">Please choose a package interest.</span>
-            </div>
-            <div class="field">
-              <label for="care">Best fit</label>
-              <select id="care" name="care">
-                <option>I want to attend a public farm day first</option>
-                <option>I may bring a family or small group</option>
-                <option>I represent a retreat, school, or team</option>
-                <option>I want a cared-for harvest bed later</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="area">Preferred area</label>
-              <select id="area" name="area">
-                <option>Any quiet village near Chiang Mai</option>
-                <option>Near Kakanok if suitable</option>
-                <option>Mae Rim</option>
-                <option>Mae Taeng</option>
-                <option>San Sai</option>
-                <option>Doi Saket</option>
-                <option>Hang Dong</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="frequency">When would you come?</label>
-              <select id="frequency" name="frequency">
-                <option>Weekend daytime</option>
-                <option>Weekday morning</option>
-                <option>Private date for my group</option>
-                <option>I mostly want updates / harvest bed later</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="notes">What would make this worth booking?</label>
-              <textarea id="notes" name="notes" placeholder="Example: Thai herbs, kids activity, retreat group, transport, vegetarian snack, photo spots, harvest bed later"></textarea>
-            </div>
-            <label class="check-field" data-field="consent">
-              <input id="consent" name="consent" type="checkbox" required>
-              <span>I agree to receive Grow Chiang Mai farm-day and pilot updates.</span>
-            </label>
-            <span class="error-text" id="consent-error">Please confirm you want farm-day and pilot updates.</span>
-            <button class="button" type="submit">Save my farm-day interest</button>
-            <p class="form-note">Prototype note: this static demo saves your entry in this browser. Connect Airtable, Supabase, Google Sheets, or a Vercel API route before using it for real bookings, leads, tickets, or deposits.</p>
-            <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+          <div class="field" data-field="name">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required>
+            <span class="error-text" id="name-error">Please enter your name.</span>
           </div>
+          <div class="field" data-field="email">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <span class="error-text" id="email-error">Email needs an @ symbol.</span>
+          </div>
+          <div class="field">
+            <label for="contact">WhatsApp or Line</label>
+            <input id="contact" name="contact" autocomplete="tel" placeholder="+66 or Line ID">
+          </div>
+          <div class="field" data-field="package">
+            <label for="package">I want</label>
+            <select id="package" name="package" required>
+              <option value="">Choose one</option>
+              <option>Farm Day Pass</option>
+              <option>Private Group Day</option>
+              <option>Harvest Bed Club later</option>
+              <option>Retreat or school partnership</option>
+              <option>Not sure yet</option>
+            </select>
+            <span class="error-text" id="package-error">Please choose one.</span>
+          </div>
+          <div class="field">
+            <label for="notes">What would make it worth coming?</label>
+            <textarea id="notes" name="notes" placeholder="Kids activity, Thai herbs, group visit, transport, vegetarian snack, photos"></textarea>
+          </div>
+          <label class="check-field" data-field="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span>I agree to receive Grow Chiang Mai pilot updates.</span>
+          </label>
+          <span class="error-text" id="consent-error">Please confirm you want updates.</span>
+          <button class="button" type="submit">Save my interest</button>
+          <p class="form-note">Prototype note: this static demo saves in this browser. Connect Airtable, Supabase, Google Sheets, or a Vercel API route before using it for real bookings, leads, tickets, or deposits.</p>
+          <p class="status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -1989,43 +639,26 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <p class="section-kicker">Clear before you join</p>
-            <h2 id="faq-title">Questions a serious member will ask.</h2>
+            <p class="section-kicker">Clear rules</p>
+            <h2 id="faq-title">Short answers.</h2>
           </div>
-          <p>The answers stay practical because the first business should prove paid visits before monthly memberships.</p>
         </div>
-        <div class="faq-list reveal">
+        <div class="faq-grid reveal">
           <details>
-            <summary>Are members renting Thai land?</summary>
-            <p>No. The safer structure is a Thai-operated farm membership and service. Members receive access, care, learning, updates, and harvest options. Legal wording is kept clear before any paid membership is confirmed.</p>
+            <summary>Are guests renting Thai land?</summary>
+            <p>No. This is a Thai-operated farm experience and service, not land ownership.</p>
           </details>
           <details>
             <summary>Is it certified organic?</summary>
-            <p>Not yet. We use organic methods, natural inputs, compost, and careful growing practices. Certified organic is only claimed after real certification and recordkeeping.</p>
+            <p>Not yet. Use organic-method language until certification and records are real.</p>
           </details>
           <details>
-            <summary>Can I watch my plot on camera?</summary>
-            <p>Not in the first version. The better business starts with farm-day visits and, later, weekly crop photos for Harvest Bed Club members. Live cameras are a paid upgrade only if members prove they value frequent updates.</p>
+            <summary>When do harvest beds open?</summary>
+            <p>After paid farm days create enough warm demand for the first 10 beds.</p>
           </details>
           <details>
-            <summary>Can AI water my harvest bed automatically?</summary>
-            <p>Not at launch. Manual caretaker care comes first. AI irrigation only makes sense after the team understands water timing, crop failure, caretaker hours, and renewal behavior across real beds.</p>
-          </details>
-          <details>
-            <summary>Why sell farm days before monthly beds?</summary>
-            <p>Because Chiang Mai visitors already understand paid experiences. Farm days create trust, photos, reviews, and group referrals before the team takes on monthly crop-care risk.</p>
-          </details>
-          <details>
-            <summary>What is the local fertilizer story?</summary>
-            <p>The professional version is traceable, not vague. Buy quality compost or natural inputs from local producers, collect clean organic waste when it can be processed safely, and show field notes. Do not overclaim that this solves burning season.</p>
-          </details>
-          <details>
-            <summary>Why keep banana rows on the land?</summary>
-            <p>If the rented place already grows banana, keep it. It gives the farm a real productive backdrop while the paid beds prove demand. The public promise should be agricultural care, soil improvement, local inputs, and a good member experience.</p>
-          </details>
-          <details>
-            <summary>What happens if my crop fails?</summary>
-            <p>Farming has weather, insects, and timing risk. Managed members should receive field notes, replanting plans when possible, and honest seasonal expectations rather than guaranteed harvest claims.</p>
+            <summary>What about cafe, cameras, and AI?</summary>
+            <p>Later. Sell visits first, then add upgrades only when paid behavior supports them.</p>
           </details>
         </div>
       </div>
@@ -2033,11 +666,8 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-grid">
-      <strong>Grow Chiang Mai</strong>
-      <span>Farm days and Harvest Bed Club outside Chiang Mai. Availability target: growchiangmai.com.</span>
-      <span>Farm days, group bookings, and harvest beds are confirmed personally before payment, site visits, live camera access, or equipment rental.</span>
-    </div>
+    <strong>Grow Chiang Mai</strong>
+    <span>Farm days first. Harvest Bed Club later. Availability target: growchiangmai.com.</span>
   </footer>
 
   <script>
@@ -2065,11 +695,8 @@
       control.setAttribute("aria-invalid", hasError ? "true" : "false");
       const error = document.querySelector(`#${fieldName}-error`);
       if (error) {
-        if (hasError) {
-          control.setAttribute("aria-describedby", error.id);
-        } else {
-          control.removeAttribute("aria-describedby");
-        }
+        if (hasError) control.setAttribute("aria-describedby", error.id);
+        else control.removeAttribute("aria-describedby");
       }
     }
 
@@ -2100,7 +727,7 @@
       statusEl.classList.remove("visible");
 
       if (!validateForm()) {
-        statusEl.textContent = "Please fix the marked fields so we can save your waitlist interest.";
+        statusEl.textContent = "Please fix the marked fields so we can save your interest.";
         statusEl.style.background = "oklch(0.94 0.045 35)";
         statusEl.style.color = "var(--error)";
         statusEl.classList.add("visible");
@@ -2111,12 +738,12 @@
       data.createdAt = new Date().toISOString();
       data.reference = `GCM-${Date.now().toString(36).toUpperCase()}`;
 
-      const existing = JSON.parse(localStorage.getItem("growChiangMaiWaitlistV1") || "[]");
+      const existing = JSON.parse(localStorage.getItem("growChiangMaiWaitlistV2") || "[]");
       existing.push(data);
-      localStorage.setItem("growChiangMaiWaitlistV1", JSON.stringify(existing));
+      localStorage.setItem("growChiangMaiWaitlistV2", JSON.stringify(existing));
 
       form.reset();
-      statusEl.textContent = `Saved. Your farm-day interest reference is ${data.reference}.`;
+      statusEl.textContent = `Saved. Your interest reference is ${data.reference}.`;
       statusEl.style.background = "oklch(0.93 0.05 135)";
       statusEl.style.color = "var(--leaf-dark)";
       statusEl.classList.add("visible");
@@ -2134,12 +761,9 @@
       : null;
 
     revealEls.forEach((el, index) => {
-      el.style.transitionDelay = `${Math.min(index * 45, 240)}ms`;
-      if (observer) {
-        observer.observe(el);
-      } else {
-        el.classList.add("is-visible");
-      }
+      el.style.transitionDelay = `${Math.min(index * 55, 260)}ms`;
+      if (observer) observer.observe(el);
+      else el.classList.add("is-visible");
     });
   </script>
 </body>
